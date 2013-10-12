@@ -1,71 +1,67 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project name="Hello" basedir="." default="dist">
-    <property name="src.dir"     value="src"/>
+<project name="POS" basedir="." default="build">
+	
+	<property name="src.dir" value="src"/>
+	<property name="conf.dir" value="conf"/>
+	<property name="lib.dir" value="lib"/>
+	<property name="build.dir" value="build"/>
+	<property name="classes.dir" value="${build.dir}/classes"/>
+	<property name="jar.dir" value="${build.dir}/jar"/>
+	<property name="main-class" value="ee.ut.math.tvt.Agnes.Intro"/>
+	<property name="group-name" value="Agnes"/>
+	<property name="version-file" value="${conf.dir}/version.properties"/>
+	
+	<path id="build.classpath">
+		<fileset dir="${lib.dir}" includes="*.jar"/>
+	</path>
+	
+	<path id="run.classpath">
+		<pathelement location="${classes.dir}"/>
+		<pathelement location="${conf.dir}"/>
+		<fileset dir="${lib.dir}" includes="*.jar"/>
+	</path>
+	
+	<target name="update-version">
+		<propertyfile file="${version-file}" comment="file_version.properties">
+			<entry key="build.revision.number" type="int" operation="+" value="1"/>
+		</propertyfile>
+		<loadproperties srcFile="${version-file}"/>
+		<propertyfile file="${version-file}" comment="file_version.properties">
+			<entry key="build.number" value="${build.major.number}.${build.minor.number}.${build.revision.number}"/>
+		</propertyfile>
+	</target>
 
-    <property name="build.dir"   value="build"/>
-    <property name="classes.dir" value="${build.dir}/classes"/>
-    <property name="jar.dir"     value="${build.dir}/jar"/>
-      <property name="main-class"  value='${ant.project.name}'/>
-       <property name="Ryhm"  value='Agnes'/>
- 		<property name="version" value="1.0"/>
+	<target name="build" description="Compiles the Task">
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${classes.dir}"/>
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false">
+			<classpath refid="build.classpath"/>
+		</javac>
+	</target>
+	
+	<target name="run" depends="build" description="Run the template application">
+		<java classname="${main-class}" classpathref="run.classpath" fork="true" />
+	</target>
 
-
-
-
-  <buildnumber file='version.properties'/>
-  
-<propertyfile
-    file="version.properties"
-    comment="file_version.properties">
-   <entry  key="build.Major" value="1"/>
- <entry key="build.number" type="int" operation="-" value="1"/>
-    <entry  key="build.Minor" value="0"/>
-    
-    <entry  key="build.Number" value="${version}.${build.number}"/>
-</propertyfile>
-
-    <target name="build" description="Compiles the Task">
-        <javac srcdir="${src.dir}" destdir="."/>
-    </target>
-
-    <target name="dist" description='Creates a jar file' depends="build">
-    	<mkdir dir="${classes.dir}"/>
-        <mkdir dir="${jar.dir}"/>
-        <jar destfile="${jar.dir}/${Ryhm}.jar" basedir=".">
+	<target name="dist" description="Creates a jar file" depends="build">
+		<mkdir dir="${jar.dir}"/>
+ 		<jar destfile="${jar.dir}/${group-name}.jar">
             <manifest>
-                <attribute name="Main-Class" value="${main-class}"/>
+                <attribute name="main-class" value="ee.ut.math.tvt.Agnes.Intro"/>
             </manifest>
-        </jar>
-    </target>
+            <fileset dir="${classes.dir}"/>
+ 			<fileset dir="${conf.dir}"/>
+            <zipgroupfileset dir="${lib.dir}" includes="*.jar"/>
+		</jar>
+		<antcall target="update-version"/>
+	</target>
     
-    <target name="jrun" description='Runs a jar file' depends="clean,build,dist">
-        <java jar="${jar.dir}/${Ryhm}.jar"  fork="true">
-         <arg value="-h"/>
-         <classpath>
-           <pathelement location="${jar.dir}"/>
-           <pathelement path="${java.class.path}"/>
-            </classpath>
-       </java>
-    </target>
+ 	<target name="jrun" description="Runs a jar file" depends="dist">
+		<java jar="${jar.dir}/${group-name}.jar" fork="true" />
+	</target>
 
-   <target name="clean" description="Delete all generated files">
-        <delete dir="${classes.dir}" failonerror="false"/>
-        <delete dir="${jar.dir}" failonerror="false"/>
-        <delete file="${ant.project.name}.jar"/>
-        <delete file="${ant.project.name}.class"/>
-    </target>
-
-     <target name="run" depends="build" description="Run the template application">
-         <java classname="${ant.project.name}">
-         <arg value="-h"/>
-         <classpath>
-           <pathelement location="."/>
-           <pathelement path="${java.class.path}"/>
-            </classpath>
-       </java>
-    </target>
-
-    
-
+ 	<target name="clean" description="Delete all generated files">
+		<delete dir="${build.dir}" failonerror="false" />
+	</target>
 
 </project>
