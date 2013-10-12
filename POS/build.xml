@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Hello" basedir="." default="dist">
+    <property name="src.dir"     value="src"/>
+
+    <property name="build.dir"   value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="jar.dir"     value="${build.dir}/jar"/>
+      <property name="main-class"  value='${ant.project.name}'/>
+       <property name="Ryhm"  value='Agnes'/>
+ 		<property name="version" value="1.0"/>
+
+
+
+
+  <buildnumber file='version.properties'/>
+  
+<propertyfile
+    file="version.properties"
+    comment="file_version.properties">
+   <entry  key="build.Major" value="1"/>
+ <entry key="build.number" type="int" operation="-" value="1"/>
+    <entry  key="build.Minor" value="0"/>
+    
+    <entry  key="build.Number" value="${version}.${build.number}"/>
+</propertyfile>
+
+    <target name="build" description="Compiles the Task">
+        <javac srcdir="${src.dir}" destdir="."/>
+    </target>
+
+    <target name="dist" description='Creates a jar file' depends="build">
+    	<mkdir dir="${classes.dir}"/>
+        <mkdir dir="${jar.dir}"/>
+        <jar destfile="${jar.dir}/${Ryhm}.jar" basedir=".">
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}"/>
+            </manifest>
+        </jar>
+    </target>
+    
+    <target name="jrun" description='Runs a jar file' depends="clean,build,dist">
+        <java jar="${jar.dir}/${Ryhm}.jar"  fork="true">
+         <arg value="-h"/>
+         <classpath>
+           <pathelement location="${jar.dir}"/>
+           <pathelement path="${java.class.path}"/>
+            </classpath>
+       </java>
+    </target>
+
+   <target name="clean" description="Delete all generated files">
+        <delete dir="${classes.dir}" failonerror="false"/>
+        <delete dir="${jar.dir}" failonerror="false"/>
+        <delete file="${ant.project.name}.jar"/>
+        <delete file="${ant.project.name}.class"/>
+    </target>
+
+     <target name="run" depends="build" description="Run the template application">
+         <java classname="${ant.project.name}">
+         <arg value="-h"/>
+         <classpath>
+           <pathelement location="."/>
+           <pathelement path="${java.class.path}"/>
+            </classpath>
+       </java>
+    </target>
+
+    
+
+
+</project>
