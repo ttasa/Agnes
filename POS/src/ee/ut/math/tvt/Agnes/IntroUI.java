@@ -33,13 +33,13 @@ public class IntroUI {
 	public IntroUI(){
 		
 		try {
-			prop.load(new FileInputStream(new File("conf/application.properties")));
+			prop.load(this.getClass().getResourceAsStream("/application.properties"));
 			teamName = prop.getProperty("team.name");
 			teamLeader = prop.getProperty("team.leader");
 			leaderEmail = prop.getProperty("team.leader.email");
 			teamMembers = prop.getProperty("team.members");
 			
-			prop.load(new FileInputStream(new File("conf/version.properties")));
+			prop.load(this.getClass().getResourceAsStream("/version.properties"));
 			version = prop.getProperty("build.number");
 		}
 		catch (IOException ex) {
@@ -47,7 +47,7 @@ public class IntroUI {
 		}
 		
 		try {
-			img = new JLabel(new ImageIcon(ImageIO.read(new File("Agnes.jpg"))));
+			img = new JLabel(new ImageIcon(ImageIO.read(this.getClass().getResourceAsStream("/Agnes.jpg"))));
 		} catch (IOException e) {
 		}
 		

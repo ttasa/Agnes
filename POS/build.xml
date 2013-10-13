@@ -9,7 +9,7 @@
 	<property name="jar.dir" value="${build.dir}/jar"/>
 	<property name="main-class" value="ee.ut.math.tvt.Agnes.Intro"/>
 	<property name="group-name" value="Agnes"/>
-	<property name="version-file" value="${conf.dir}/version.properties"/>
+	<property name="version-file" value="version.properties"/>
 	
 	<path id="build.classpath">
 		<fileset dir="${lib.dir}" includes="*.jar"/>
@@ -29,6 +29,7 @@
 		<propertyfile file="${version-file}" comment="file_version.properties">
 			<entry key="build.number" value="${build.major.number}.${build.minor.number}.${build.revision.number}"/>
 		</propertyfile>
+		<copy file="${version-file}" todir="${classes.dir}"/>
 	</target>
 
 	<target name="build" description="Compiles the Task">
@@ -37,6 +38,9 @@
 		<javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false">
 			<classpath refid="build.classpath"/>
 		</javac>
+		<copy todir="${classes.dir}">
+			<fileset dir="." includes="*.properties, *.jpg"/>
+		</copy>
 	</target>
 	
 	<target name="run" depends="build" description="Run the template application">
@@ -44,16 +48,15 @@
 	</target>
 
 	<target name="dist" description="Creates a jar file" depends="build">
+		<antcall target="update-version"/>
 		<mkdir dir="${jar.dir}"/>
  		<jar destfile="${jar.dir}/${group-name}.jar">
             <manifest>
                 <attribute name="main-class" value="ee.ut.math.tvt.Agnes.Intro"/>
             </manifest>
             <fileset dir="${classes.dir}"/>
- 			<fileset dir="${conf.dir}"/>
             <zipgroupfileset dir="${lib.dir}" includes="*.jar"/>
 		</jar>
-		<antcall target="update-version"/>
 	</target>
     
  	<target name="jrun" description="Runs a jar file" depends="dist">
