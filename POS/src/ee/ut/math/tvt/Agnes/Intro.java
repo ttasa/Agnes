@@ -1,5 +1,7 @@
 package ee.ut.math.tvt.Agnes;
 
+import java.util.Date;
+
 import org.apache.log4j.Logger;
 
 public class Intro {
@@ -9,7 +11,7 @@ public class Intro {
 	public static void main(String[] args) {
 		new IntroUI();
 		
-		logger.info("Start");
+		logger.info("Intro window opened from " + logger.getName() + " at " + new Date());
 	}
 
 }
