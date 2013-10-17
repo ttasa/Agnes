@@ -9,10 +9,19 @@
 			<param name="ConversionPattern" value="%-5p %c{1} - %m%n"/> 
 		</layout> 
 	</appender> 
+	
+	<appender name="fileAppender" class="org.apache.log4j.FileAppender">
+		<param name="file" value="log/logs.log" />
+		<param name="append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p %c{1} - %m%n"/> 
+		</layout>
+	</appender>
 
 	<root>
 		<priority value="info"/>
 		<appender-ref ref="consoleAppender"/>
+		<appender-ref ref="fileAppender" />
 	</root>
 
 </log4j:configuration>
