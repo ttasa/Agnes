@@ -32,7 +32,7 @@
 		<copy file="${version-file}" todir="${classes.dir}"/>
 	</target>
 
-	<target name="build" description="Compiles the Task">
+	<target name="build" depends="clean" description="Compiles the Task">
 		<mkdir dir="${build.dir}"/>
 		<mkdir dir="${classes.dir}"/>
 		<javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false">
@@ -55,6 +55,7 @@
                 <attribute name="main-class" value="ee.ut.math.tvt.Agnes.Intro"/>
             </manifest>
             <fileset dir="${classes.dir}"/>
+ 			<fileset dir="${conf.dir}"/>
             <zipgroupfileset dir="${lib.dir}" includes="*.jar"/>
 		</jar>
 	</target>

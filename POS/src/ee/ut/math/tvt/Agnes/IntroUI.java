@@ -25,6 +25,7 @@ public class IntroUI {
 	String leaderEmail = "";
 	String teamMembers = "";
 	String version = "";
+	String logo = "";
 
 	JLabel img = new JLabel();
 	
@@ -38,6 +39,7 @@ public class IntroUI {
 			teamLeader = prop.getProperty("team.leader");
 			leaderEmail = prop.getProperty("team.leader.email");
 			teamMembers = prop.getProperty("team.members");
+			logo = prop.getProperty("team.logo");
 			
 			prop.load(this.getClass().getResourceAsStream("/version.properties"));
 			version = prop.getProperty("build.number");
@@ -47,7 +49,7 @@ public class IntroUI {
 		}
 		
 		try {
-			img = new JLabel(new ImageIcon(ImageIO.read(this.getClass().getResourceAsStream("/Agnes.jpg"))));
+			img = new JLabel(new ImageIcon(ImageIO.read(this.getClass().getResourceAsStream("/"+logo))));
 		} catch (IOException e) {
 		}
 		
