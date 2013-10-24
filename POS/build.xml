@@ -10,6 +10,7 @@
 	<property name="main-class" value="ee.ut.math.tvt.Agnes.Intro"/>
 	<property name="group-name" value="Agnes"/>
 	<property name="version-file" value="version.properties"/>
+	<property name="repository" value="https://github.com/ttasa/TestRepo"/>
 	
 	<path id="build.classpath">
 		<fileset dir="${lib.dir}" includes="*.jar"/>
@@ -20,6 +21,14 @@
 		<pathelement location="${conf.dir}"/>
 		<fileset dir="${lib.dir}" includes="*.jar"/>
 	</path>
+	
+		
+
+	<target name="runc" depends="build" description="Run the application (console)">
+	<java classname="${main-class}" classpathref="run.classpath" fork="yes">
+		<arg value="console" />
+	</java>
+</target>
 	
 	<target name="update-version">
 		<propertyfile file="${version-file}" comment="file_version.properties">
@@ -46,6 +55,41 @@
 	<target name="run" depends="build" description="Run the template application">
 		<java classname="${main-class}" classpathref="run.classpath" fork="true" />
 	</target>
+
+<target name="git_tag" description="Make a repository tag"> 
+<input message="Homework number:" addproperty="git.tag.number" />
+<input message="Tag message:" addproperty="git.tag.message" />
+<exec executable="git"> <arg value="tag" />
+ 	<arg value="-a" />
+ 	<arg value="homework_${git.tag.number}" />
+	<arg value="-m" />
+ 	<arg value="${git.tag.message}" />
+ </exec> 
+<exec executable="git">
+ 	<arg value="push" /> 
+	<arg value="${repository}"/>
+	<arg value="--tags" />
+ </exec> </target>
+
+<target name="git_commit" description="add, commit push">
+		<input message="Commit message:" addproperty="git.commit.message" /> 
+<exec executable="git">
+	<arg value="add"/>
+	<arg value="."/>
+</exec>
+<exec executable="git">
+	<arg value="commit"/>
+	<arg value="-m"/>
+	<arg value="${git.commit.message}"/>
+</exec>
+<exec executable="git">
+	<arg value="push"/>
+	<arg value="${repository}"/>
+	<arg value="master"/>
+</exec>
+
+</target>
+
 
 	<target name="dist" description="Creates a jar file" depends="build">
 		<antcall target="update-version"/>
