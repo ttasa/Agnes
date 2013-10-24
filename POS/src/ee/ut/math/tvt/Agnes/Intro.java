@@ -13,7 +13,6 @@ import ee.ut.math.tvt.salessystem.ui.SalesSystemUI;
 public class Intro {
 	private static final Logger log = Logger.getLogger(Intro.class);
 	private static final String MODE = "console";
-	private static final Logger logger = Logger.getLogger(Intro.class);
 	
 	public static void main(String[] args) {
 		final SalesDomainController domainController = new SalesDomainControllerImpl();
@@ -39,7 +38,7 @@ public class Intro {
 				e.printStackTrace();
 			}
 			introUI.setVisible(false);
-		logger.info("Intro window opened from " + logger.getName() + " at " + new Date());
+		log.info("Intro window opened from " + log.getName() + " at " + new Date());
 	}
 
 }

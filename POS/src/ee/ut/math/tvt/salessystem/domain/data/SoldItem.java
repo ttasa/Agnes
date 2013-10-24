@@ -12,13 +12,16 @@ public class SoldItem implements Cloneable, DisplayableItem {
     
     private String name;
     private Integer quantity;
+    private double sum;
     private double price;
     
     public SoldItem(StockItem stockItem, int quantity) {
         this.stockItem = stockItem;
+        this.id=stockItem.getId();
         this.name = stockItem.getName();
         this.price = stockItem.getPrice();
         this.quantity = quantity;
+        this.sum = getSum();
         
     }
     

@@ -41,11 +41,23 @@ public abstract class SalesSystemTableModel<T extends DisplayableItem> extends
     public String getColumnName(final int columnIndex) {
         return headers[columnIndex];
     }
+    
+    public String[] getProductNames() {
+    	String [] s= new String [rows.size()];
+    	int i=0;
+        for (final T item : rows) {
+        	s[i]=item.getName();
+        	i++;
+                
+        }
+        return s;
+    }
+    
 
     public int getRowCount() {
         return rows.size();
     }
-
+    	
     public Object getValueAt(final int rowIndex, final int columnIndex) {
         return getColumnValue(rows.get(rowIndex), columnIndex);
     }

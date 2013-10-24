@@ -10,9 +10,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -30,7 +32,7 @@ public class PurchaseItemPanel extends JPanel {
     // Text field on the dialogPane
     private JTextField barCodeField;
     private JTextField quantityField;
-    private JTextField nameField;
+    private JComboBox nameField;
     private JTextField priceField;
 
     private JButton addItemButton;
@@ -81,10 +83,15 @@ public class PurchaseItemPanel extends JPanel {
         panel.setLayout(new GridLayout(5, 2));
         panel.setBorder(BorderFactory.createTitledBorder("Product"));
 
-        // Initialize the textfields
+        // Initialize the textfields ##SIIA Initsializeerida
+
+     
+        String[] productNames=model.getWarehouseTableModel().getProductNames();
+      
+     
         barCodeField = new JTextField();
         quantityField = new JTextField("1");
-        nameField = new JTextField();
+        nameField = new JComboBox(productNames);
         priceField = new JTextField();
 
         // Fill the dialog fields if the bar code text field loses focus
@@ -133,22 +140,33 @@ public class PurchaseItemPanel extends JPanel {
 
     // Fill dialog with data from the "database".
     public void fillDialogFields() {
-        StockItem stockItem = getStockItemByBarcode();
+        StockItem stockItem = getStockItemByName();
 
         if (stockItem != null) {
-            nameField.setText(stockItem.getName());
+            barCodeField.setText(String.valueOf(stockItem.getId()));
             String priceString = String.valueOf(stockItem.getPrice());
             priceField.setText(priceString);
         } else {
-            reset();
+           reset();
+       
         }
     }
 
     // Search the warehouse for a StockItem with the bar code entered
     // to the barCode textfield.
-    private StockItem getStockItemByBarcode() {
+  /*  private StockItem getStockItemByBarcode() {
         try {
-            int code = Integer.parseInt(barCodeField.getText());
+            int code = Integer.parseInt( barCodeField.getText());
+            return model.getWarehouseTableModel().getItemById(code);
+        } catch (NumberFormatException ex) {
+            return null;
+        } catch (NoSuchElementException ex) {
+            return null;
+        }
+    }*/
+    private StockItem getStockItemByName() {
+        try {
+            int code = nameField.getSelectedIndex()+1;
             return model.getWarehouseTableModel().getItemById(code);
         } catch (NumberFormatException ex) {
             return null;
@@ -156,23 +174,29 @@ public class PurchaseItemPanel extends JPanel {
             return null;
         }
     }
+    
 
     /**
      * Add new item to the cart.
      */
     public void addItemEventHandler() {
         // add chosen item to the shopping cart.
-        StockItem stockItem = getStockItemByBarcode();
+    	StockItem stockItem = getStockItemByName();
+    	fillDialogFields();
         if (stockItem != null) {
             int quantity;
+            int id;
             try {
                 quantity = Integer.parseInt(quantityField.getText());
+                id = Integer.parseInt(barCodeField.getText());
             } catch (NumberFormatException ex) {
-                quantity = 1;
+               quantity =  Integer.parseInt(quantityField.getText());
             }
+            model.getWarehouseTableModel().removeQuantity(stockItem,quantity);
+            if(model.getWarehouseTableModel().getNewQuantity(stockItem,quantity)>=0){
             model.getCurrentPurchaseTableModel()
                 .addItem(new SoldItem(stockItem, quantity));
-        }
+        }}
     }
 
     /**
@@ -183,15 +207,16 @@ public class PurchaseItemPanel extends JPanel {
         this.addItemButton.setEnabled(enabled);
         this.barCodeField.setEnabled(enabled);
         this.quantityField.setEnabled(enabled);
+        this.nameField.setEnabled(enabled);
     }
 
     /**
      * Reset dialog fields.
      */
     public void reset() {
-        barCodeField.setText("");
+      barCodeField.setText("");
         quantityField.setText("1");
-        nameField.setText("");
+     //   nameField.setEnabled(true);
         priceField.setText("");
     }
 

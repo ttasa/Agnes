@@ -32,7 +32,39 @@ public class StockTableModel extends SalesSystemTableModel<StockItem> {
 		}
 		throw new IllegalArgumentException("Column index out of range");
 	}
+	public double getNewQuantity(StockItem stockItem,final double quantity ){
+	StockItem item = getItemById(stockItem.getId());
+	double newQuantity=item.getQuantity() - quantity;
+	return newQuantity;
+	
+	}
+	
+	
+	public void removeQuantity(StockItem stockItem, final int quantity){
+	
+		try {
+			StockItem item = getItemById(stockItem.getId());
+			double newQuantity=item.getQuantity() - quantity;
+			if (newQuantity<0){
+				log.warn("The warehouse doesn't have that many items ");
+				
+			}
+			else{
+			item.setQuantity((int) newQuantity);
+			
+			
+			log.debug("Found existing item " + stockItem.getName()
+					+ " decreased quantity by " + stockItem.getQuantity());
+			}
+			}
+		catch (NoSuchElementException e) {
+			rows.add(stockItem);
+			log.debug("Added " + stockItem.getName()
+					+ " quantity of " + stockItem.getQuantity());
 
+		}
+		fireTableDataChanged();
+	}
 	/**
 	 * Add new stock item to table. If there already is a stock item with
 	 * same id, then existing item's quantity will be increased.
