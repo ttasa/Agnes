@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class IntroUI {
+public class IntroUI extends JFrame {
 	
 	JFrame f = new JFrame("Agnes POS");
 	JPanel p = new JPanel();
