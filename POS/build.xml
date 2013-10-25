@@ -1,114 +1,116 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project name="POS" basedir="." default="build">
-	
-	<property name="src.dir" value="src"/>
-	<property name="conf.dir" value="conf"/>
-	<property name="lib.dir" value="lib"/>
-	<property name="build.dir" value="build"/>
-	<property name="classes.dir" value="${build.dir}/classes"/>
-	<property name="jar.dir" value="${build.dir}/jar"/>
-	<property name="main-class" value="ee.ut.math.tvt.Agnes.Intro"/>
-	<property name="group-name" value="Agnes"/>
-	<property name="version-file" value="version.properties"/>
-	<property name="repository" value="https://github.com/ttasa/TestRepo"/>
-	
+
+	<property name="src.dir" value="src" />
+	<property name="conf.dir" value="conf" />
+	<property name="lib.dir" value="lib" />
+	<property name="build.dir" value="build" />
+	<property name="classes.dir" value="${build.dir}/classes" />
+	<property name="jar.dir" value="${build.dir}/jar" />
+	<property name="main-class" value="ee.ut.math.tvt.Agnes.Intro" />
+	<property name="group-name" value="Agnes" />
+	<property name="version-file" value="version.properties" />
+	<property name="repository" value="https://github.com/ttasa/TestRepo" />
+
 	<path id="build.classpath">
-		<fileset dir="${lib.dir}" includes="*.jar"/>
+		<fileset dir="${lib.dir}" includes="*.jar" />
 	</path>
-	
+
 	<path id="run.classpath">
-		<pathelement location="${classes.dir}"/>
-		<pathelement location="${conf.dir}"/>
-		<fileset dir="${lib.dir}" includes="*.jar"/>
+		<pathelement location="${classes.dir}" />
+		<pathelement location="${conf.dir}" />
+		<fileset dir="${lib.dir}" includes="*.jar" />
 	</path>
-	
-		
+
+
 
 	<target name="runc" depends="build" description="Run the application (console)">
-	<java classname="${main-class}" classpathref="run.classpath" fork="yes">
-		<arg value="console" />
-	</java>
-</target>
-	
+		<java classname="${main-class}" classpathref="run.classpath" fork="yes">
+			<arg value="console" />
+		</java>
+	</target>
+
 	<target name="update-version">
 		<propertyfile file="${version-file}" comment="file_version.properties">
-			<entry key="build.revision.number" type="int" operation="+" value="1"/>
+			<entry key="build.revision.number" type="int" operation="+" value="1" />
 		</propertyfile>
-		<loadproperties srcFile="${version-file}"/>
+		<loadproperties srcFile="${version-file}" />
 		<propertyfile file="${version-file}" comment="file_version.properties">
-			<entry key="build.number" value="${build.major.number}.${build.minor.number}.${build.revision.number}"/>
+			<entry key="build.number" value="${build.major.number}.${build.minor.number}.${build.revision.number}" />
 		</propertyfile>
-		<copy file="${version-file}" todir="${classes.dir}"/>
+		<copy file="${version-file}" todir="${classes.dir}" />
 	</target>
 
 	<target name="build" depends="clean" description="Compiles the Task">
-		<mkdir dir="${build.dir}"/>
-		<mkdir dir="${classes.dir}"/>
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${classes.dir}" />
 		<javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false">
-			<classpath refid="build.classpath"/>
+			<classpath refid="build.classpath" />
 		</javac>
 		<copy todir="${classes.dir}">
-			<fileset dir="." includes="*.properties, *.jpg"/>
+			<fileset dir="." includes="*.properties, *.jpg" />
 		</copy>
 	</target>
-	
+
 	<target name="run" depends="build" description="Run the template application">
 		<java classname="${main-class}" classpathref="run.classpath" fork="true" />
 	</target>
 
-<target name="git_tag" description="Make a repository tag"> 
-<input message="Homework number:" addproperty="git.tag.number" />
-<input message="Tag message:" addproperty="git.tag.message" />
-<exec executable="git"> <arg value="tag" />
- 	<arg value="-a" />
- 	<arg value="homework_${git.tag.number}" />
-	<arg value="-m" />
- 	<arg value="${git.tag.message}" />
- </exec> 
-<exec executable="git">
- 	<arg value="push" /> 
-	<arg value="${repository}"/>
-	<arg value="--tags" />
- </exec> </target>
+	<target name="git_tag" description="Make a repository tag">
+		<input message="Homework number:" addproperty="git.tag.number" />
+		<input message="Tag message:" addproperty="git.tag.message" />
+		<exec executable="git">
+			<arg value="tag" />
+			<arg value="-a" />
+			<arg value="homework_${git.tag.number}" />
+			<arg value="-m" />
+			<arg value="${git.tag.message}" />
+		</exec>
+		<exec executable="git">
+			<arg value="push" />
+			<arg value="${repository}" />
+			<arg value="--tags" />
+		</exec>
+	</target>
 
-<target name="git_commit" description="add, commit push">
-		<input message="Commit message:" addproperty="git.commit.message" /> 
-<exec executable="git">
-	<arg value="add"/>
-	<arg value="."/>
-</exec>
-<exec executable="git">
-	<arg value="commit"/>
-	<arg value="-m"/>
-	<arg value="${git.commit.message}"/>
-</exec>
-<exec executable="git">
-	<arg value="push"/>
-	<arg value="${repository}"/>
-	<arg value="master"/>
-</exec>
+	<target name="git_commit" description="add, commit push">
+		<input message="Commit message:" addproperty="git.commit.message" />
+		<exec executable="git">
+			<arg value="add" />
+			<arg value="." />
+		</exec>
+		<exec executable="git">
+			<arg value="commit" />
+			<arg value="-m" />
+			<arg value="${git.commit.message}" />
+		</exec>
+		<exec executable="git">
+			<arg value="push" />
+			<arg value="${repository}" />
+			<arg value="master" />
+		</exec>
 
-</target>
+	</target>
 
 
 	<target name="dist" description="Creates a jar file" depends="build">
-		<antcall target="update-version"/>
-		<mkdir dir="${jar.dir}"/>
- 		<jar destfile="${jar.dir}/${group-name}.jar">
-            <manifest>
-                <attribute name="main-class" value="ee.ut.math.tvt.Agnes.Intro"/>
-            </manifest>
-            <fileset dir="${classes.dir}"/>
- 			<fileset dir="${conf.dir}"/>
-            <zipgroupfileset dir="${lib.dir}" includes="*.jar"/>
+		<antcall target="update-version" />
+		<mkdir dir="${jar.dir}" />
+		<jar destfile="${jar.dir}/${group-name}.jar">
+			<manifest>
+				<attribute name="main-class" value="ee.ut.math.tvt.Agnes.Intro" />
+			</manifest>
+			<fileset dir="${classes.dir}" />
+			<fileset dir="${conf.dir}" />
+			<zipgroupfileset dir="${lib.dir}" includes="*.jar" />
 		</jar>
 	</target>
-    
- 	<target name="jrun" description="Runs a jar file" depends="dist">
+
+	<target name="jrun" description="Runs a jar file" depends="dist">
 		<java jar="${jar.dir}/${group-name}.jar" fork="true" />
 	</target>
 
- 	<target name="clean" description="Delete all generated files">
+	<target name="clean" description="Delete all generated files">
 		<delete dir="${build.dir}" failonerror="false" />
 	</target>
 
