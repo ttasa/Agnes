@@ -53,7 +53,10 @@
 	</target>
 
 	<target name="run" depends="build" description="Run the template application">
-		<java classname="${main-class}" classpathref="run.classpath" fork="true" />
+		<java classname="${main-class}" classpathref="run.classpath" fork="true">
+			<jvmarg value="-Xdebug" />
+			<jvmarg value="-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=1044" />
+		</java>
 	</target>
 
 	<target name="git_tag" description="Make a repository tag">
