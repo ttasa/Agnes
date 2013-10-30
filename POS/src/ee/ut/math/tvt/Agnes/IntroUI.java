@@ -1,8 +1,6 @@
 package ee.ut.math.tvt.Agnes;
 
 import java.awt.BorderLayout;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 

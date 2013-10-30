@@ -260,3 +260,18 @@ WARN  StockTableModel - The warehouse doesn't have that many items
 WARN  StockTableModel - The warehouse doesn't have that many items 
 INFO  PurchaseTab - Sale complete
 ERROR PurchaseTab - Underaged!
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Wed Oct 30 15:08:19 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Wed Oct 30 15:39:27 EET 2013
+INFO  StockTab - New sale process started
+INFO  StockTab - Sale cancelled
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Wed Oct 30 15:47:46 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Wed Oct 30 15:58:50 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Wed Oct 30 16:03:02 EET 2013
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Wed Oct 30 16:12:07 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Wed Oct 30 16:14:35 EET 2013
+INFO  PurchaseTab - New sale process started

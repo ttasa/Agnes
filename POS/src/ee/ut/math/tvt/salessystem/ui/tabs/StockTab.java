@@ -1,36 +1,219 @@
 package ee.ut.math.tvt.salessystem.ui.tabs;
 
+import ee.ut.math.tvt.salessystem.domain.exception.VerificationFailedException;
+import ee.ut.math.tvt.salessystem.domain.controller.SalesDomainController;
 import ee.ut.math.tvt.salessystem.ui.model.SalesSystemModel;
+import ee.ut.math.tvt.salessystem.ui.panels.PurchaseItemPanel;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.JTableHeader;
+import org.apache.log4j.Logger;
 
-
+/**
+ * Encapsulates everything that has to do with the warehouse tab (the tab
+ * labelled "Warehouse" in the menu).
+ */
 public class StockTab {
+
+  private static final Logger log = Logger.getLogger(StockTab.class);
+
+  private final SalesDomainController domainController;
 
   private JButton addItem;
 
+  private JButton confirmAdd;
+
+  private JButton cancelAdd;
+
+  private PurchaseItemPanel addItemPane;
+
   private SalesSystemModel model;
 
-  public StockTab(SalesSystemModel model) {
+
+  public StockTab(SalesDomainController controller,
+      SalesSystemModel model)
+  {
+    this.domainController = controller;
     this.model = model;
   }
 
-  // warehouse stock tab - consists of a menu and a table
+
+  /**
+   * The stock tab. Consists of the warehouse menu and the stock table.
+   */
   public Component draw() {
     JPanel panel = new JPanel();
-    panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-    GridBagLayout gb = new GridBagLayout();
+    // Layout
+    panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+    panel.setLayout(new GridBagLayout());
+
+    // Add the purchase menu
+    panel.add(getPurchaseMenuPane(), getConstraintsForPurchaseMenu());
+
+    // Add the main purchase-panel
+    addItemPane = new PurchaseItemPanel(model);
+    panel.add(addItemPane, getConstraintsForPurchasePanel());
+
+    return panel;
+  }
+
+
+
+
+  // The purchase menu. Contains buttons "New purchase", "Submit", "Cancel".
+  private Component getPurchaseMenuPane() {
+    JPanel panel = new JPanel();
+
+    // Initialize layout
+    panel.setLayout(new GridBagLayout());
+    GridBagConstraints gc = getConstraintsForMenuButtons();
+
+    // Initialize the buttons
+    addItem = createNewPurchaseButton();
+    confirmAdd = createConfirmButton();
+    cancelAdd = createCancelButton();
+
+    // Add the buttons to the panel, using GridBagConstraints we defined above
+    panel.add(addItem, gc);
+    panel.add(confirmAdd, gc);
+    panel.add(cancelAdd, gc);
+
+    return panel;
+  }
+
+
+  // Creates the button "New purchase"
+  private JButton createNewPurchaseButton() {
+    JButton b = new JButton("Add item");
+    b.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        newPurchaseButtonClicked();
+      }
+    });
+
+    return b;
+  }
+
+  // Creates the "Confirm" button
+  private JButton createConfirmButton() {
+    JButton b = new JButton("Confirm");
+    b.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        submitPurchaseButtonClicked();
+      }
+    });
+    b.setEnabled(false);
+
+    return b;
+  }
+
+
+  // Creates the "Cancel" button
+  private JButton createCancelButton() {
+    JButton b = new JButton("Cancel");
+    b.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        cancelPurchaseButtonClicked();
+      }
+    });
+    b.setEnabled(false);
+
+    return b;
+  }
+
+
+
+
+
+  /* === Event handlers for the menu buttons
+   *     (get executed when the buttons are clicked)
+   */
+
+
+  /** Event handler for the <code>new purchase</code> event. */
+  protected void newPurchaseButtonClicked() {
+    log.info("New sale process started");
+    try {
+      domainController.startNewPurchase();
+      startNewSale();
+    } catch (VerificationFailedException e1) {
+      log.error(e1.getMessage());
+    }
+  }
+
+
+  /**  Event handler for the <code>cancel purchase</code> event. */
+  protected void cancelPurchaseButtonClicked() {
+    log.info("Sale cancelled");
+    try {
+      domainController.cancelCurrentPurchase();
+      endSale();
+      model.getCurrentPurchaseTableModel().clear();
+    } catch (VerificationFailedException e1) {
+      log.error(e1.getMessage());
+    }
+  }
+
+
+  /** Event handler for the <code>submit purchase</code> event. */
+  protected void submitPurchaseButtonClicked() {
+    log.info("Sale complete");
+    try {
+      log.debug("Contents of the current basket:\n" + model.getCurrentPurchaseTableModel());
+      domainController.submitCurrentPurchase(
+          model.getCurrentPurchaseTableModel().getTableRows()
+      );
+      endSale();
+      model.getCurrentPurchaseTableModel().clear();
+    } catch (VerificationFailedException e1) {
+      log.error(e1.getMessage());
+    }
+  }
+
+
+
+  /* === Helper methods that bring the whole purchase-tab to a certain state
+   *     when called.
+   */
+
+  // switch UI to the state that allows to proceed with the purchase
+  private void startNewSale() {
+    addItemPane.reset();
+
+    addItemPane.setEnabled(true);
+    confirmAdd.setEnabled(true);
+    cancelAdd.setEnabled(true);
+    addItem.setEnabled(false);
+  }
+
+  // switch UI to the state that allows to initiate new purchase
+  private void endSale() {
+    addItemPane.reset();
+
+    cancelAdd.setEnabled(false);
+    confirmAdd.setEnabled(false);
+    addItem.setEnabled(true);
+    addItemPane.setEnabled(false);
+  }
+
+
+
+
+  /* === Next methods just create the layout constraints objects that control the
+   *     the layout of different elements in the purchase tab. These definitions are
+   *     brought out here to separate contents from layout, and keep the methods
+   *     that actually create the components shorter and cleaner.
+   */
+
+  private GridBagConstraints getConstraintsForPurchaseMenu() {
     GridBagConstraints gc = new GridBagConstraints();
-    panel.setLayout(gb);
 
     gc.fill = GridBagConstraints.HORIZONTAL;
     gc.anchor = GridBagConstraints.NORTH;
@@ -38,58 +221,32 @@ public class StockTab {
     gc.weightx = 1.0d;
     gc.weighty = 0d;
 
-    panel.add(drawStockMenuPane(), gc);
-
-    gc.weighty = 1.0;
-    gc.fill = GridBagConstraints.BOTH;
-    panel.add(drawStockMainPane(), gc);
-    return panel;
+    return gc;
   }
 
-  // warehouse menu
-  private Component drawStockMenuPane() {
-    JPanel panel = new JPanel();
 
+  private GridBagConstraints getConstraintsForPurchasePanel() {
     GridBagConstraints gc = new GridBagConstraints();
-    GridBagLayout gb = new GridBagLayout();
 
-    panel.setLayout(gb);
+    gc.fill = GridBagConstraints.BOTH;
+    gc.anchor = GridBagConstraints.NORTH;
+    gc.gridwidth = GridBagConstraints.REMAINDER;
+    gc.weightx = 1.0d;
+    gc.weighty = 1.0;
 
-    gc.anchor = GridBagConstraints.NORTHWEST;
+    return gc;
+  }
+
+
+  // The constraints that control the layout of the buttons in the purchase menu
+  private GridBagConstraints getConstraintsForMenuButtons() {
+    GridBagConstraints gc = new GridBagConstraints();
+
     gc.weightx = 0;
-
-    addItem = new JButton("Add");
+    gc.anchor = GridBagConstraints.CENTER;
     gc.gridwidth = GridBagConstraints.RELATIVE;
-    gc.weightx = 1.0;
-    panel.add(addItem, gc);
 
-    panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-    return panel;
-  }
-
-
-  // table of the wareshouse stock
-  private Component drawStockMainPane() {
-    JPanel panel = new JPanel();
-
-    JTable table = new JTable(model.getWarehouseTableModel());
-
-    JTableHeader header = table.getTableHeader();
-    header.setReorderingAllowed(false);
-
-    JScrollPane scrollPane = new JScrollPane(table);
-
-    GridBagConstraints gc = new GridBagConstraints();
-    GridBagLayout gb = new GridBagLayout();
-    gc.fill = GridBagConstraints.BOTH;
-    gc.weightx = 1.0;
-    gc.weighty = 1.0;
-
-    panel.setLayout(gb);
-    panel.add(scrollPane, gc);
-
-    panel.setBorder(BorderFactory.createTitledBorder("Warehouse status"));
-    return panel;
+    return gc;
   }
 
 }

@@ -3,6 +3,7 @@ package ee.ut.math.tvt.salessystem.ui.panels;
 import ee.ut.math.tvt.salessystem.domain.data.SoldItem;
 import ee.ut.math.tvt.salessystem.domain.data.StockItem;
 import ee.ut.math.tvt.salessystem.ui.model.SalesSystemModel;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -10,8 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.util.Arrays;
 import java.util.NoSuchElementException;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -23,7 +24,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
- * Purchase pane + shopping cart tabel UI.
+ * Purchase pane + shopping cart table UI.
  */
 public class PurchaseItemPanel extends JPanel {
 
@@ -32,7 +33,7 @@ public class PurchaseItemPanel extends JPanel {
     // Text field on the dialogPane
     private JTextField barCodeField;
     private JTextField quantityField;
-    private JComboBox nameField;
+    private JComboBox<String> nameField;
     private JTextField priceField;
 
     private JButton addItemButton;
@@ -91,19 +92,10 @@ public class PurchaseItemPanel extends JPanel {
      
         barCodeField = new JTextField();
         quantityField = new JTextField("1");
-        nameField = new JComboBox(productNames);
+        nameField = new JComboBox<String>(productNames);
         priceField = new JTextField();
 
-        // Fill the dialog fields if the bar code text field loses focus
-        barCodeField.addFocusListener(new FocusListener() {
-            public void focusGained(FocusEvent e) {
-            }
-
-            public void focusLost(FocusEvent e) {
-                fillDialogFields();
-            }
-        });
-
+        barCodeField.setEditable(false);
         nameField.setEditable(false);
         priceField.setEditable(false);
 
@@ -132,6 +124,12 @@ public class PurchaseItemPanel extends JPanel {
                 addItemEventHandler();
             }
         });
+        
+        nameField.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                comboBoxEventHandler();
+            }
+        });
 
         panel.add(addItemButton);
 
@@ -151,19 +149,7 @@ public class PurchaseItemPanel extends JPanel {
        
         }
     }
-
-    // Search the warehouse for a StockItem with the bar code entered
-    // to the barCode textfield.
-  /*  private StockItem getStockItemByBarcode() {
-        try {
-            int code = Integer.parseInt( barCodeField.getText());
-            return model.getWarehouseTableModel().getItemById(code);
-        } catch (NumberFormatException ex) {
-            return null;
-        } catch (NoSuchElementException ex) {
-            return null;
-        }
-    }*/
+    
     private StockItem getStockItemByName() {
         try {
             int code = nameField.getSelectedIndex()+1;
@@ -198,6 +184,25 @@ public class PurchaseItemPanel extends JPanel {
                 .addItem(new SoldItem(stockItem, quantity));
         }}
     }
+    
+    public void comboBoxEventHandler() {
+        // add chosen item to the shopping cart.
+    	StockItem stockItem = getStockItemByName();
+    	fillDialogFields();
+        if (stockItem != null) {
+            int quantity;
+            try {
+                quantity = Integer.parseInt(quantityField.getText());
+            } catch (NumberFormatException ex) {
+               quantity =  Integer.parseInt(quantityField.getText());
+            }
+//            model.getWarehouseTableModel().removeQuantity(stockItem,quantity);
+//            if(model.getWarehouseTableModel().getNewQuantity(stockItem,quantity)>=0){
+//            model.getCurrentPurchaseTableModel()
+//                .addItem(new SoldItem(stockItem, quantity));
+//        }
+        }
+    }
 
     /**
      * Sets whether or not this component is enabled.
@@ -221,8 +226,8 @@ public class PurchaseItemPanel extends JPanel {
     }
 
     /*
-     * === Ideally, UI's layout and behavior should be kept as separated as
-     * possible. If you work on the behavior of the application, you don't want
+     * === Ideally, UI's layout and behaviour should be kept as separated as
+     * possible. If you work on the behaviour of the application, you don't want
      * the layout details to get on your way all the time, and vice versa. This
      * separation leads to cleaner, more readable and better maintainable code.
      * 
