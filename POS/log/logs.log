@@ -988,3 +988,36 @@ INFO  PurchaseTab - New sale process started
 ERROR ConfirmationPane - java.lang.NumberFormatException: empty String
 ERROR ConfirmationPane - java.lang.NumberFormatException: empty String
 INFO  PurchaseTab - Sale complete
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 23:03:28 EET 2013
+INFO  PurchaseTab - New sale process started
+ERROR PurchaseItemPanel - java.lang.NumberFormatException: For input string: ""
+ERROR ConfirmationPane - java.lang.NumberFormatException: empty String
+INFO  PurchaseTab - Sale complete
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 23:15:17 EET 2013
+INFO  PurchaseTab - New sale process started
+ERROR ConfirmationPane - java.lang.NumberFormatException: empty String
+INFO  PurchaseTab - Sale complete
+INFO  PurchaseTab - Started adding new item
+INFO  PurchaseTab - Added new item
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Item adding cancelled
+ERROR ConfirmationPane - java.lang.NumberFormatException: empty String
+ERROR ConfirmationPane - java.lang.NumberFormatException: empty String
+INFO  PurchaseTab - Sale complete
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 23:20:22 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 23:21:10 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 23:21:40 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 23:22:27 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 23:24:31 EET 2013
+INFO  PurchaseTab - Started adding new item
+INFO  PurchaseTab - Item adding cancelled
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 23:24:45 EET 2013
+INFO  PurchaseTab - New sale process started
