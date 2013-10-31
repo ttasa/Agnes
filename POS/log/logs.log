@@ -904,3 +904,5 @@ INFO  PurchaseTab - New sale process started
 INFO  PurchaseTab - Sale complete
 ERROR PurchaseTab - Underaged!
 INFO  PurchaseTab - Sale cancelled
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 22:05:00 EET 2013
+INFO  PurchaseTab - New sale process started

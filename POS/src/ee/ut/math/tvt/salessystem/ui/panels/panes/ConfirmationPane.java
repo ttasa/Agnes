@@ -11,8 +11,6 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 import org.apache.log4j.Logger;
 
@@ -23,20 +21,19 @@ import ee.ut.math.tvt.salessystem.ui.tabs.PurchaseTab;
 
 public class ConfirmationPane extends JPanel {
 
-    JTextField paymentField;
-    JTextField sumField;
-    JTextField changeField;
+    JTextField paymentAmount;
+    JTextField sumOfOrder;
+    JTextField changeAmount;
     JButton acceptButton;
-    PurchaseTab purchaseTab;
     JButton cancelButton;
     SalesSystemModel model;
 	private static final Logger log = Logger.getLogger(PurchaseTab.class);
 
 	
     public ConfirmationPane(SalesSystemModel model) {
-        paymentField = new JTextField();
-        sumField = new JTextField();
-        changeField = new JTextField();
+        paymentAmount = new JTextField();
+        sumOfOrder = new JTextField();
+        changeAmount = new JTextField();
         acceptButton = createAcceptButton();
         cancelButton = createCancelButton();
         this.model = model;
@@ -50,29 +47,13 @@ public class ConfirmationPane extends JPanel {
         this.setBorder(BorderFactory.createTitledBorder("Confirmation"));
         
         this.add(new JLabel("Total sum:"));
-        this.add(sumField);
-        sumField.setEnabled(false);
+        this.add(sumOfOrder);
         
         this.add(new JLabel("Amount:"));
-        this.add(paymentField);
-        paymentField.getDocument().addDocumentListener(new DocumentListener() {
-
-			public void insertUpdate(DocumentEvent e) {
-				changeField.setText(getChange());
-			}
-
-			public void removeUpdate(DocumentEvent e) {
-				changeField.setText(getChange());
-			}
-
-			public void changedUpdate(DocumentEvent e) {
-				changeField.setText(getChange());
-			}
-        });
+        this.add(paymentAmount);
         
         this.add(new JLabel("Change:"));
-        this.add(changeField);
-        changeField.setEnabled(false);
+        this.add(changeAmount);
         
         this.add(acceptButton);
         this.add(cancelButton);
@@ -102,49 +83,16 @@ public class ConfirmationPane extends JPanel {
 	}
 	
 	protected void acceptButtonClicked() {
-        try {
-            double payment = Double.parseDouble(paymentField.getText());
-            double sum = Double.parseDouble(sumField.getText());
-            if (payment >= sum) {
-            	purchaseTab.submitPurchaseButtonClicked();
-            }
-        } catch (NumberFormatException ex) {
-        }
+
 	}
 	
 	protected void cancelButtonClicked() {
-		this.reset();
-		this.setVisible(false);
-		purchaseTab.setOrderButtonsEnabledValueTo(true);
 	}
     
-    public void processPurchase(PurchaseTab purchaseTab, List<SoldItem> items) {
-    	this.purchaseTab = purchaseTab;
-    	sumField.setText("" + getItemsTotalPrice(items));
-    }
-    
-    private double getItemsTotalPrice(List<SoldItem> items) {
-    	double sum = 0;
-    	for (int i=0; i<items.size(); i++) {
-    		sum += items.get(i).getSum();
-    	}
-    	return sum;
-    }
-    
-    private String getChange() {
-        try {
-            double payment = Double.parseDouble(paymentField.getText());
-            double sum = Double.parseDouble(sumField.getText());
-            if (payment >= sum) {
-            	return "" + (payment-sum);
-            }
-        } catch (NumberFormatException ex) {
-        }
-		return "";
-    }
-    
-    public void reset() {
-    	paymentField.setText("");
+    public void processPurchase(List<SoldItem> items) {
+    	sumOfOrder.setText("1");
+    	model.getHistoryTableModel().addItem(
+				model.getCurrentPurchaseTableModel().getTableRows());
     }
 	
 }
