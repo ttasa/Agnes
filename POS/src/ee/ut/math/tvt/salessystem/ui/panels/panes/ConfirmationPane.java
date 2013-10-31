@@ -11,6 +11,8 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import org.apache.log4j.Logger;
 
@@ -25,6 +27,7 @@ public class ConfirmationPane extends JPanel {
     JTextField sumField;
     JTextField changeField;
     JButton acceptButton;
+    PurchaseTab purchaseTab;
     JButton cancelButton;
     SalesSystemModel model;
 	private static final Logger log = Logger.getLogger(PurchaseTab.class);
@@ -52,9 +55,18 @@ public class ConfirmationPane extends JPanel {
         
         this.add(new JLabel("Amount:"));
         this.add(paymentField);
-        paymentField.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("test");
+        paymentField.getDocument().addDocumentListener(new DocumentListener() {
+
+			public void insertUpdate(DocumentEvent e) {
+				changeField.setText(getChange());
+			}
+
+			public void removeUpdate(DocumentEvent e) {
+				changeField.setText(getChange());
+			}
+
+			public void changedUpdate(DocumentEvent e) {
+				changeField.setText(getChange());
 			}
         });
         
@@ -90,22 +102,25 @@ public class ConfirmationPane extends JPanel {
 	}
 	
 	protected void acceptButtonClicked() {
-		this.setVisible(false);
         try {
             double payment = Double.parseDouble(paymentField.getText());
             double sum = Double.parseDouble(sumField.getText());
+            if (payment >= sum) {
+            	purchaseTab.submitPurchaseButtonClicked();
+            }
         } catch (NumberFormatException ex) {
         }
 	}
 	
 	protected void cancelButtonClicked() {
+		this.reset();
 		this.setVisible(false);
+		purchaseTab.setOrderButtonsEnabledValueTo(true);
 	}
     
-    public void processPurchase(List<SoldItem> items) {
+    public void processPurchase(PurchaseTab purchaseTab, List<SoldItem> items) {
+    	this.purchaseTab = purchaseTab;
     	sumField.setText("" + getItemsTotalPrice(items));
-    	model.getHistoryTableModel().addItem(
-				model.getCurrentPurchaseTableModel().getTableRows());
     }
     
     private double getItemsTotalPrice(List<SoldItem> items) {
@@ -114,6 +129,22 @@ public class ConfirmationPane extends JPanel {
     		sum += items.get(i).getSum();
     	}
     	return sum;
+    }
+    
+    private String getChange() {
+        try {
+            double payment = Double.parseDouble(paymentField.getText());
+            double sum = Double.parseDouble(sumField.getText());
+            if (payment >= sum) {
+            	return "" + (payment-sum);
+            }
+        } catch (NumberFormatException ex) {
+        }
+		return "";
+    }
+    
+    public void reset() {
+    	paymentField.setText("");
     }
 	
 }

@@ -150,20 +150,29 @@ public class PurchaseTab {
 	}
 
 	/** Event handler for the <code>submit purchase</code> event. */
-	protected void submitPurchaseButtonClicked() {
-		log.info("Sale complete");
-		purchasePane.getConfirmationPane().setVisible(true);
-		purchasePane.getConfirmationPane().processPurchase(
-				model.getCurrentPurchaseTableModel().getTableRows());
-		try {
-			log.debug("Contents of the current basket:\n"
-					+ model.getCurrentPurchaseTableModel());
-			domainController.submitCurrentPurchase(model.getCurrentPurchaseTableModel().getTableRows());
-			endSale();
-			model.getCurrentPurchaseTableModel().clear();
-		} catch (VerificationFailedException e1) {
-			log.error(e1.getMessage());
+	public void submitPurchaseButtonClicked() {
+		if (purchasePane.getConfirmationPane().isVisible()) {
+			setOrderButtonsEnabledValueTo(true);
+			purchasePane.getConfirmationPane().setVisible(false);
+			log.info("Sale complete");
+			try {
+				log.debug("Contents of the current basket:\n"
+						+ model.getCurrentPurchaseTableModel());
+				domainController.submitCurrentPurchase(model.getCurrentPurchaseTableModel().getTableRows());
+				endSale();
+				model.getCurrentPurchaseTableModel().clear();
+			} catch (VerificationFailedException e1) {
+				log.error(e1.getMessage());
+			}
+	    	model.getHistoryTableModel().addItem(
+					model.getCurrentPurchaseTableModel().getTableRows());
 		}
+		else {
+			setOrderButtonsEnabledValueTo(false);
+			purchasePane.getConfirmationPane().setVisible(true);
+			purchasePane.getConfirmationPane().processPurchase(this, model.getCurrentPurchaseTableModel().getTableRows());
+		}
+		
 	}
 
 	/*
@@ -175,9 +184,7 @@ public class PurchaseTab {
 	private void startNewSale() {
 		purchasePane.reset();
 
-		purchasePane.setEnabled(true);
-		submitPurchase.setEnabled(true);
-		cancelPurchase.setEnabled(true);
+		setOrderButtonsEnabledValueTo(true);
 		newPurchase.setEnabled(false);
 	}
 
@@ -185,10 +192,14 @@ public class PurchaseTab {
 	private void endSale() {
 		purchasePane.reset();
 
-		cancelPurchase.setEnabled(false);
-		submitPurchase.setEnabled(false);
+		setOrderButtonsEnabledValueTo(false);
 		newPurchase.setEnabled(true);
-		purchasePane.setEnabled(false);
+	}
+	
+	public void setOrderButtonsEnabledValueTo(boolean value) {
+		purchasePane.setEnabled(value);
+		submitPurchase.setEnabled(value);
+		cancelPurchase.setEnabled(value);
 	}
 
 	/*
