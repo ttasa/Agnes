@@ -1,5 +1,6 @@
 package ee.ut.math.tvt.salessystem.ui.panels;
 
+import ee.ut.math.tvt.Agnes.Intro;
 import ee.ut.math.tvt.salessystem.domain.data.SoldItem;
 import ee.ut.math.tvt.salessystem.domain.data.StockItem;
 import ee.ut.math.tvt.salessystem.ui.model.SalesSystemModel;
@@ -19,16 +20,20 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+
+import org.apache.log4j.Logger;
 
 /**
  * Purchase pane + shopping cart table UI.
  */
 public class PurchaseItemPanel extends JPanel {
 
+	private static final Logger log = Logger.getLogger(PurchaseItemPanel.class);
     private static final long serialVersionUID = 1L;
 
     // Text field on the dialogPane
@@ -189,17 +194,25 @@ public class PurchaseItemPanel extends JPanel {
     	fillDialogFields();
     	
         if (stockItem != null) {
-            int quantity;
+            int quantity = 0;
             try {
                 quantity = Integer.parseInt(quantityField.getText());
             } catch (NumberFormatException ex) {
-               quantity =  Integer.parseInt(quantityField.getText());
+               log.error(ex);
             }
             model.getWarehouseTableModel().removeQuantity(stockItem,quantity);
-            if (model.getWarehouseTableModel().getNewQuantity(stockItem, quantity) >= 0) {
-            	model.getCurrentPurchaseTableModel()
-                	.addItem(new SoldItem(stockItem, quantity));
+            if (quantity > 0) {
+            	if (model.getWarehouseTableModel().getNewQuantity(stockItem, quantity) >= 0) {
+            		model.getCurrentPurchaseTableModel().addItem(new SoldItem(stockItem, quantity)); 
+            	}
+            	else {
+            		JOptionPane.showMessageDialog(null, "Not so much left in warehouse!");
+            	}
             }
+            else {
+            	JOptionPane.showMessageDialog(null, "Bad quantity!");
+            }
+          
         }
     }
     

@@ -955,3 +955,36 @@ INFO  PurchaseTab - Sale complete
 INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 22:37:49 EET 2013
 INFO  PurchaseTab - New sale process started
 INFO  PurchaseTab - Sale complete
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 22:39:42 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 22:41:42 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 22:43:59 EET 2013
+INFO  PurchaseTab - New sale process started
+ERROR PurchaseItemPanel - java.lang.NumberFormatException: For input string: ""
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 22:46:01 EET 2013
+INFO  PurchaseTab - New sale process started
+ERROR PurchaseItemPanel - java.lang.NumberFormatException: For input string: ""
+ERROR PurchaseItemPanel - java.lang.NumberFormatException: For input string: ""
+INFO  PurchaseTab - Sale complete
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 22:50:22 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 22:51:42 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale cancelled
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 22:54:49 EET 2013
+INFO  PurchaseTab - New sale process started
+WARN  StockTableModel - The warehouse doesn't have that many items 
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 22:56:29 EET 2013
+INFO  PurchaseTab - Started adding new item
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 23:00:22 EET 2013
+INFO  PurchaseTab - New sale process started
+ERROR PurchaseItemPanel - java.lang.NumberFormatException: For input string: ""
+ERROR PurchaseTab - java.lang.NumberFormatException: empty String
+ERROR PurchaseTab - java.lang.NumberFormatException: empty String
+INFO  PurchaseTab - Sale complete
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 23:01:21 EET 2013
+INFO  PurchaseTab - New sale process started
+ERROR ConfirmationPane - java.lang.NumberFormatException: empty String
+ERROR ConfirmationPane - java.lang.NumberFormatException: empty String
+INFO  PurchaseTab - Sale complete

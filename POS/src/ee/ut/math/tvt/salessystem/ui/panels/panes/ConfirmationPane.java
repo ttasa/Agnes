@@ -9,6 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
@@ -30,7 +31,7 @@ public class ConfirmationPane extends JPanel {
     JButton cancelButton;
     SalesSystemModel model;
     PurchaseTab purchaseTab;
-	private static final Logger log = Logger.getLogger(PurchaseTab.class);
+	private static final Logger log = Logger.getLogger(ConfirmationPane.class);
 
 	
     public ConfirmationPane(SalesSystemModel model) {
@@ -110,8 +111,13 @@ public class ConfirmationPane extends JPanel {
 				reset();
 				purchaseTab.submitPurchaseButtonClicked();
 			}
+			else {
+				JOptionPane.showMessageDialog(null, "Payment not big enough!");
+			}
 		} 
 		catch (NumberFormatException ex) {
+			log.error(ex);
+			JOptionPane.showMessageDialog(null, "Bad amount!");
 		}
 	}
 	
@@ -144,6 +150,7 @@ public class ConfirmationPane extends JPanel {
 			}
 		} 
 		catch (NumberFormatException ex) {
+			log.error(ex);
 		}
 		return "";
     }
