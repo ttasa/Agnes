@@ -152,6 +152,7 @@ public class PurchaseTab {
 	/** Event handler for the <code>submit purchase</code> event. */
 	protected void submitPurchaseButtonClicked() {
 		log.info("Sale complete");
+		purchasePane.getConfirmationPane().setVisible(true);
 		purchasePane.getConfirmationPane().processPurchase(
 				model.getCurrentPurchaseTableModel().getTableRows());
 		try {

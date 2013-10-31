@@ -52,6 +52,7 @@ public class PurchaseItemPanel extends JPanel {
     public PurchaseItemPanel(SalesSystemModel model) {
         this.model = model;
         confirmationPane = new ConfirmationPane(model);
+        confirmationPane.setVisible(false);
 
         setLayout(new GridBagLayout());
 
@@ -270,7 +271,7 @@ public class PurchaseItemPanel extends JPanel {
         gc.weighty = 0d;
         gc.gridwidth = GridBagConstraints.REMAINDER;
         gc.fill = GridBagConstraints.NONE;
-
+        
         return gc;
     }
 
@@ -283,6 +284,8 @@ public class PurchaseItemPanel extends JPanel {
         gc.weighty = 1.0;
         gc.gridwidth = GridBagConstraints.REMAINDER;
         gc.fill = GridBagConstraints.BOTH;
+        gc.gridx = 0;
+        gc.gridy = 1;
 
         return gc;
     }

@@ -21,9 +21,9 @@ import ee.ut.math.tvt.salessystem.ui.tabs.PurchaseTab;
 
 public class ConfirmationPane extends JPanel {
 
-    JTextField paymentAmount;
-    JTextField sumOfOrder;
-    JTextField changeAmount;
+    JTextField paymentField;
+    JTextField sumField;
+    JTextField changeField;
     JButton acceptButton;
     JButton cancelButton;
     SalesSystemModel model;
@@ -31,9 +31,9 @@ public class ConfirmationPane extends JPanel {
 
 	
     public ConfirmationPane(SalesSystemModel model) {
-        paymentAmount = new JTextField();
-        sumOfOrder = new JTextField();
-        changeAmount = new JTextField();
+        paymentField = new JTextField();
+        sumField = new JTextField();
+        changeField = new JTextField();
         acceptButton = createAcceptButton();
         cancelButton = createCancelButton();
         this.model = model;
@@ -47,13 +47,20 @@ public class ConfirmationPane extends JPanel {
         this.setBorder(BorderFactory.createTitledBorder("Confirmation"));
         
         this.add(new JLabel("Total sum:"));
-        this.add(sumOfOrder);
+        this.add(sumField);
+        sumField.setEnabled(false);
         
         this.add(new JLabel("Amount:"));
-        this.add(paymentAmount);
+        this.add(paymentField);
+        paymentField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("test");
+			}
+        });
         
         this.add(new JLabel("Change:"));
-        this.add(changeAmount);
+        this.add(changeField);
+        changeField.setEnabled(false);
         
         this.add(acceptButton);
         this.add(cancelButton);
@@ -83,16 +90,30 @@ public class ConfirmationPane extends JPanel {
 	}
 	
 	protected void acceptButtonClicked() {
-
+		this.setVisible(false);
+        try {
+            double payment = Double.parseDouble(paymentField.getText());
+            double sum = Double.parseDouble(sumField.getText());
+        } catch (NumberFormatException ex) {
+        }
 	}
 	
 	protected void cancelButtonClicked() {
+		this.setVisible(false);
 	}
     
     public void processPurchase(List<SoldItem> items) {
-    	sumOfOrder.setText("1");
+    	sumField.setText("" + getItemsTotalPrice(items));
     	model.getHistoryTableModel().addItem(
 				model.getCurrentPurchaseTableModel().getTableRows());
+    }
+    
+    private double getItemsTotalPrice(List<SoldItem> items) {
+    	double sum = 0;
+    	for (int i=0; i<items.size(); i++) {
+    		sum += items.get(i).getSum();
+    	}
+    	return sum;
     }
 	
 }
