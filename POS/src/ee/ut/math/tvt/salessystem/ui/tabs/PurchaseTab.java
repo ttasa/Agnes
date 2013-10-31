@@ -4,16 +4,21 @@ import ee.ut.math.tvt.salessystem.domain.exception.VerificationFailedException;
 import ee.ut.math.tvt.salessystem.domain.controller.SalesDomainController;
 import ee.ut.math.tvt.salessystem.ui.model.SalesSystemModel;
 import ee.ut.math.tvt.salessystem.ui.panels.PurchaseItemPanel;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
+
 import org.apache.log4j.Logger;
+
 
 /**
  * Encapsulates everything that has to do with the purchase tab (the tab
@@ -53,7 +58,7 @@ public class PurchaseTab {
 
 		// Add the purchase menu
 		panel.add(getPurchaseMenuPane(), getConstraintsForPurchaseMenu());
-		
+
 		// Add the main purchase-panel
 		purchasePane = new PurchaseItemPanel(model);
 		panel.add(purchasePane, getConstraintsForPurchasePanel());

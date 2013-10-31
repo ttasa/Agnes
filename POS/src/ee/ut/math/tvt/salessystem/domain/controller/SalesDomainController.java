@@ -36,7 +36,7 @@ public interface SalesDomainController {
     public void cancelCurrentPurchase() throws VerificationFailedException;
 
     /**
-     * Commit business transaction - purchsae of goods.
+     * Commit business transaction - purchase of goods.
      * 
      * @param goods
      *            Goods that the buyer has chosen to buy.
@@ -45,5 +45,26 @@ public interface SalesDomainController {
     public void submitCurrentPurchase(List<SoldItem> goods)
             throws VerificationFailedException;
 
+    /**
+     * Initiates the warehouse item adding
+     * 
+     * @throws VerificationFailedException
+     */
+    public void startNewAdd() throws VerificationFailedException;
+    
+    /**
+     * Adds the selected item to the warehouse
+     * 
+     * @throws VerificationFailedException
+     */
+    public void confirmItemAdd() throws VerificationFailedException;
+    
+    /**
+     * Rollback business transaction - purchase of goods.
+     * 
+     * @throws VerificationFailedException
+     */
+    public void cancelItemAdd() throws VerificationFailedException;
+    
     
 }

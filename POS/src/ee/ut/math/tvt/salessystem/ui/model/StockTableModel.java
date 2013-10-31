@@ -105,4 +105,9 @@ public class StockTableModel extends SalesSystemTableModel<StockItem> {
 		return buffer.toString();
 	}
 
+	public StockItem getItemByName(String name) {
+			//TODO name.get
+		return null;
+	}
+
 }

@@ -43,6 +43,8 @@ public class PurchaseItemPanel extends JPanel {
     // Warehouse model
     private SalesSystemModel model;
 
+    
+    
     /**
      * Constructs new purchase item panel.
      * 
@@ -90,21 +92,19 @@ public class PurchaseItemPanel extends JPanel {
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(5, 2));
         panel.setBorder(BorderFactory.createTitledBorder("Product"));
-
-        // Initialize the textfields ##SIIA Initsializeerida
-
      
-        String[] productNames=model.getWarehouseTableModel().getProductNames();
-      
-     
+        String[] productNames = model.getWarehouseTableModel().getProductNames();
+
         barCodeField = new JTextField();
-        quantityField = new JTextField("1");
+        quantityField = new JTextField("");
         nameField = new JComboBox<String>(productNames);
         priceField = new JTextField();
 
         barCodeField.setEditable(false);
         nameField.setEditable(false);
         priceField.setEditable(false);
+        
+        nameField.setSelectedItem(null);
 
         // == Add components to the panel
 
@@ -132,9 +132,17 @@ public class PurchaseItemPanel extends JPanel {
             }
         });
         
+//        nameField.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                comboBoxEventHandler();
+//            }
+//        });
+        
         nameField.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                comboBoxEventHandler();
+                
+            	fillDialogFields();
+            	quantityField.setText("");
             }
         });
 
@@ -157,7 +165,6 @@ public class PurchaseItemPanel extends JPanel {
             priceField.setText(priceString);
         } else {
            reset();
-       
         }
     }
     
@@ -180,12 +187,11 @@ public class PurchaseItemPanel extends JPanel {
         // add chosen item to the shopping cart.
     	StockItem stockItem = getStockItemByName();
     	fillDialogFields();
+    	
         if (stockItem != null) {
             int quantity;
-            int id;
             try {
                 quantity = Integer.parseInt(quantityField.getText());
-                id = Integer.parseInt(barCodeField.getText());
             } catch (NumberFormatException ex) {
                quantity =  Integer.parseInt(quantityField.getText());
             }
@@ -197,24 +203,24 @@ public class PurchaseItemPanel extends JPanel {
         }
     }
     
-    public void comboBoxEventHandler() {
-        // add chosen item to the shopping cart.
-    	StockItem stockItem = getStockItemByName();
-    	fillDialogFields();
-        if (stockItem != null) {
-            int quantity;
-            try {
-                quantity = Integer.parseInt(quantityField.getText());
-            } catch (NumberFormatException ex) {
-               quantity =  Integer.parseInt(quantityField.getText());
-            }
-//            model.getWarehouseTableModel().removeQuantity(stockItem,quantity);
-//            if(model.getWarehouseTableModel().getNewQuantity(stockItem,quantity)>=0){
-//            model.getCurrentPurchaseTableModel()
-//                .addItem(new SoldItem(stockItem, quantity));
+//    public void comboBoxEventHandler() {
+//        // add chosen item to the shopping cart.
+//    	StockItem stockItem = getStockItemByName();
+//    	fillDialogFields();
+//        if (stockItem != null) {
+//            int quantity;
+//            try {
+//                quantity = Integer.parseInt(quantityField.getText());
+//            } catch (NumberFormatException ex) {
+//               quantity =  Integer.parseInt(quantityField.getText());
+//            }
+////            model.getWarehouseTableModel().removeQuantity(stockItem,quantity);
+////            if(model.getWarehouseTableModel().getNewQuantity(stockItem,quantity)>=0){
+////            model.getCurrentPurchaseTableModel()
+////                .addItem(new SoldItem(stockItem, quantity));
+////        }
 //        }
-        }
-    }
+//    }
 
     /**
      * Sets whether or not this component is enabled.
@@ -234,6 +240,7 @@ public class PurchaseItemPanel extends JPanel {
       barCodeField.setText("");
         quantityField.setText("1");
      //   nameField.setEnabled(true);
+        nameField.setSelectedItem(null);
         priceField.setText("");
     }
 
@@ -271,7 +278,7 @@ public class PurchaseItemPanel extends JPanel {
         gc.weighty = 0d;
         gc.gridwidth = GridBagConstraints.REMAINDER;
         gc.fill = GridBagConstraints.NONE;
-        
+
         return gc;
     }
 

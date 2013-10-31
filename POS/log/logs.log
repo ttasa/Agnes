@@ -883,3 +883,24 @@ INFO  PurchaseTab - New sale process started
 INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 19:51:05 EET 2013
 INFO  PurchaseTab - New sale process started
 INFO  PurchaseTab - Sale complete
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 20:59:22 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 21:11:23 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 21:18:08 EET 2013
+INFO  PurchaseTab - New sale process started
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 21:18:40 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 21:19:39 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 21:20:26 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale cancelled
