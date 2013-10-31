@@ -25,11 +25,11 @@ public class HistoryTableModel extends AbstractTableModel {
 		orders = new ArrayList<List<SoldItem>>();
 	}
 
-    public void addItem(final List<SoldItem> item) {
+    public void addItem(final List<SoldItem> items) {
     	String date = (new SimpleDateFormat("dd.MM.yyyy")).format(new Date());
     	String time = (new SimpleDateFormat("HH:mm:ss")).format(new Date());
-        rows.add(new String[] { date, time, "1" });
-        orders.add(item);
+        rows.add(new String[] { date, time, getItemsSum(items) });
+        orders.add(items);
         fireTableDataChanged();
     }
 
@@ -55,6 +55,16 @@ public class HistoryTableModel extends AbstractTableModel {
     @Override
     public String getColumnName(final int columnIndex) {
         return headers[columnIndex];
+    }
+    
+    private String getItemsSum(List<SoldItem> items) {
+    	double sum = 0;
+    	
+    	for (int i=0; i<items.size(); i++) {
+    		sum += items.get(i).getSum();
+    	}
+    	
+    	return "" + sum;
     }
 
 }

@@ -158,7 +158,6 @@ public class PurchaseTab {
 	public void submitPurchaseButtonClicked() {
 		if (purchasePane.getConfirmationPane().isVisible()) {
 			purchasePane.getConfirmationPane().setVisible(false);
-			startNewSale();
 			log.info("Sale complete");
 			try {
 				log.debug("Contents of the current basket:\n"
@@ -166,8 +165,8 @@ public class PurchaseTab {
 				domainController.submitCurrentPurchase(model
 						.getCurrentPurchaseTableModel().getTableRows());
 				endSale();
-				model.getCurrentPurchaseTableModel().clear();
 		    	model.getHistoryTableModel().addItem(model.getCurrentPurchaseTableModel().getTableRows());
+				model.getCurrentPurchaseTableModel().clear();
 			} catch (VerificationFailedException e1) {
 				log.error(e1.getMessage());
 			}
