@@ -25,19 +25,20 @@ public class Intro {
 		} else {
 
 			IntroUI introUI = new IntroUI();
-			introUI.setVisible(true);
+			//introUI.setVisible(true);
 			introUI.setAlwaysOnTop(true);
 
-			final SalesSystemUI ui = new SalesSystemUI(domainController);
-			ui.setVisible(true);
-
 			introUI.setAlwaysOnTop(false);
+			//introUI.setVisible(false);
 			try {
 				Thread.sleep(3000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			introUI.setVisible(false);
+			introUI.setFrameVisibilityTo(false);
+			final SalesSystemUI ui = new SalesSystemUI(domainController);
+			ui.setVisible(true);
+			
 		log.info("Intro window opened from " + log.getName() + " at " + new Date());
 	}
 

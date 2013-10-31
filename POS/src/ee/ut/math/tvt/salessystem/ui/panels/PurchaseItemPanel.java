@@ -3,6 +3,7 @@ package ee.ut.math.tvt.salessystem.ui.panels;
 import ee.ut.math.tvt.salessystem.domain.data.SoldItem;
 import ee.ut.math.tvt.salessystem.domain.data.StockItem;
 import ee.ut.math.tvt.salessystem.ui.model.SalesSystemModel;
+import ee.ut.math.tvt.salessystem.ui.panels.panes.ConfirmationPane;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -37,6 +38,7 @@ public class PurchaseItemPanel extends JPanel {
     private JTextField priceField;
 
     private JButton addItemButton;
+    ConfirmationPane confirmationPane;
 
     // Warehouse model
     private SalesSystemModel model;
@@ -49,10 +51,14 @@ public class PurchaseItemPanel extends JPanel {
      */
     public PurchaseItemPanel(SalesSystemModel model) {
         this.model = model;
+        confirmationPane = new ConfirmationPane(model);
 
         setLayout(new GridBagLayout());
 
         add(drawDialogPane(), getDialogPaneConstraints());
+        add(confirmationPane, getConfirmationPaneConstraints());
+        
+        
         add(drawBasketPane(), getBasketPaneConstraints());
 
         setEnabled(false);
@@ -66,7 +72,7 @@ public class PurchaseItemPanel extends JPanel {
         basketPane.setLayout(new GridBagLayout());
         basketPane.setBorder(BorderFactory.createTitledBorder("Shopping cart"));
 
-        // Create the table, put it inside a scollPane,
+        // Create the table, put it inside a scrollPane,
         // and add the scrollPane to the basketPanel.
         JTable table = new JTable(model.getCurrentPurchaseTableModel());
         JScrollPane scrollPane = new JScrollPane(table);
@@ -135,6 +141,10 @@ public class PurchaseItemPanel extends JPanel {
 
         return panel;
     }
+    
+    public ConfirmationPane getConfirmationPane() {
+    	return confirmationPane;
+    }
 
     // Fill dialog with data from the "database".
     public void fillDialogFields() {
@@ -179,10 +189,11 @@ public class PurchaseItemPanel extends JPanel {
                quantity =  Integer.parseInt(quantityField.getText());
             }
             model.getWarehouseTableModel().removeQuantity(stockItem,quantity);
-            if(model.getWarehouseTableModel().getNewQuantity(stockItem,quantity)>=0){
-            model.getCurrentPurchaseTableModel()
-                .addItem(new SoldItem(stockItem, quantity));
-        }}
+            if (model.getWarehouseTableModel().getNewQuantity(stockItem, quantity) >= 0) {
+            	model.getCurrentPurchaseTableModel()
+                	.addItem(new SoldItem(stockItem, quantity));
+            }
+        }
     }
     
     public void comboBoxEventHandler() {
@@ -240,6 +251,18 @@ public class PurchaseItemPanel extends JPanel {
 
     // Formatting constraints for the dialogPane
     private GridBagConstraints getDialogPaneConstraints() {
+        GridBagConstraints gc = new GridBagConstraints();
+
+        gc.anchor = GridBagConstraints.WEST;
+        gc.weightx = 0.2;
+        gc.weighty = 0d;
+        //gc.gridwidth = GridBagConstraints.REMAINDER;
+        gc.fill = GridBagConstraints.NONE;
+
+        return gc;
+    }
+    
+    private GridBagConstraints getConfirmationPaneConstraints() {
         GridBagConstraints gc = new GridBagConstraints();
 
         gc.anchor = GridBagConstraints.WEST;

@@ -275,3 +275,402 @@ INFO  PurchaseTab - New sale process started
 INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Wed Oct 30 16:12:07 EET 2013
 INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Wed Oct 30 16:14:35 EET 2013
 INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Wed Oct 30 20:08:59 EET 2013
+INFO  PurchaseTab - New sale process started
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+INFO  PurchaseTab - Sale cancelled
+INFO  StockTab - New sale process started
+INFO  PurchaseTab - New sale process started
+INFO  StockTab - Sale complete
+ERROR StockTab - Underaged!
+INFO  StockTab - Sale cancelled
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale cancelled
+INFO  StockTab - New sale process started
+INFO  StockTab - Sale complete
+ERROR StockTab - Underaged!
+INFO  StockTab - Sale cancelled
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Wed Oct 30 20:24:18 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Wed Oct 30 20:56:00 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale cancelled
+INFO  StockTab - New sale process started
+INFO  StockTab - Sale cancelled
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Wed Oct 30 22:03:18 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Wed Oct 30 22:10:38 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Wed Oct 30 22:11:11 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Wed Oct 30 22:14:57 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Wed Oct 30 22:15:09 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Wed Oct 30 22:22:01 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale cancelled
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Wed Oct 30 22:57:26 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale cancelled
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Wed Oct 30 22:58:11 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale cancelled
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Wed Oct 30 22:58:30 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 00:05:27 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 00:09:47 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale cancelled
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 00:11:08 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 00:14:20 EET 2013
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 00:15:11 EET 2013
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 00:20:59 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 00:38:25 EET 2013
+INFO  PurchaseTab - New sale process started
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+INFO  PurchaseTab - Sale cancelled
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 00:40:55 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 01:03:53 EET 2013
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 01:08:54 EET 2013
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 01:11:53 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 01:12:06 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 01:14:20 EET 2013
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 01:14:39 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 01:15:06 EET 2013
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 01:21:30 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 01:24:44 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 01:29:31 EET 2013
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 01:54:42 EET 2013
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 02:23:05 EET 2013
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 02:27:05 EET 2013
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 02:33:19 EET 2013
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:08:28 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:09:08 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:09:31 EET 2013
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:10:10 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:10:59 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale cancelled
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:11:55 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:14:16 EET 2013
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:14:40 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:16:12 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:18:31 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:20:20 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:22:49 EET 2013
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:24:47 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:26:54 EET 2013
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+WARN  StockTableModel - The warehouse doesn't have that many items 
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:28:57 EET 2013
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:29:52 EET 2013
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:31:05 EET 2013
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:31:42 EET 2013
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:35:24 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:42:13 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:47:18 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale cancelled
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:50:13 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 03:57:16 EET 2013
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 09:46:57 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 10:07:25 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 10:08:32 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 10:09:55 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 10:28:31 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale cancelled
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 10:34:38 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 10:35:00 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 10:36:07 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 10:37:19 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 10:38:08 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale cancelled
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 10:42:20 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 10:54:29 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 10:56:18 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 10:57:13 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 10:57:41 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:01:28 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:02:04 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:03:15 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:04:36 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:06:02 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:07:29 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale cancelled
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:09:20 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:13:16 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:16:08 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:16:31 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:17:09 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:18:12 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:18:58 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale cancelled
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:20:05 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:20:27 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:25:22 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:28:34 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:32:24 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:32:49 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:35:01 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:44:52 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:45:06 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:46:01 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 11:47:47 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale cancelled
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 12:09:11 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 12:09:40 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 12:11:07 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 12:12:20 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 12:30:49 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 12:39:43 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale cancelled
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 13:28:54 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 14:25:02 EET 2013
+INFO  PurchaseTab - New sale process started
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 14:34:21 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+WARN  StockTableModel - The warehouse doesn't have that many items 
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 14:45:09 EET 2013
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 14:45:33 EET 2013
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale complete
+ERROR PurchaseTab - Underaged!
+INFO  PurchaseTab - Sale cancelled

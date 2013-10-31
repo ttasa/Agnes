@@ -32,11 +32,12 @@ public class StockTableModel extends SalesSystemTableModel<StockItem> {
 		}
 		throw new IllegalArgumentException("Column index out of range");
 	}
-	public double getNewQuantity(StockItem stockItem,final double quantity ){
-	StockItem item = getItemById(stockItem.getId());
-	double newQuantity=item.getQuantity() - quantity;
-	return newQuantity;
 	
+	public double getNewQuantity(StockItem stockItem, final double quantity ){
+		StockItem item = getItemById(stockItem.getId());
+		double newQuantity = item.getQuantity() - quantity;
+		
+		return newQuantity;
 	}
 	
 	

@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 
 public class IntroUI extends JFrame {
 	
+	private static final long serialVersionUID = 1L;
 	JFrame f = new JFrame("Agnes POS");
 	JPanel p = new JPanel();
 	JPanel pic = new JPanel();
@@ -76,4 +77,9 @@ public class IntroUI extends JFrame {
 		f.add(pic, BorderLayout.EAST);
 		f.pack();
 	}
+	
+	public void setFrameVisibilityTo(boolean value) {
+		f.setVisible(value);
+	}
+	
 }
