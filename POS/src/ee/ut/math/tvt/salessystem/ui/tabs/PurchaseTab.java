@@ -144,6 +144,7 @@ public class PurchaseTab {
 
 	/** Event handler for the <code>cancel purchase</code> event. */
 	protected void cancelPurchaseButtonClicked() {
+
 		log.info("Sale cancelled");
 		try {
 			domainController.cancelCurrentPurchase();

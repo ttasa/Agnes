@@ -200,10 +200,10 @@ public class PurchaseItemPanel extends JPanel {
             } catch (NumberFormatException ex) {
                log.error(ex);
             }
-            model.getWarehouseTableModel().removeQuantity(stockItem,quantity);
             if (quantity > 0) {
             	if (model.getWarehouseTableModel().getNewQuantity(stockItem, quantity) >= 0) {
-            		model.getCurrentPurchaseTableModel().addItem(new SoldItem(stockItem, quantity)); 
+            		model.getCurrentPurchaseTableModel().addItem(new SoldItem(stockItem, quantity));
+            		model.getWarehouseTableModel().removeQuantity(stockItem,quantity);
             	}
             	else {
             		JOptionPane.showMessageDialog(null, "Not so much left in warehouse!");
