@@ -66,7 +66,14 @@ public class PurchaseInfoTableModel extends SalesSystemTableModel<SoldItem> {
          * existing stock.
          */
         
-        rows.add(item);
+    	if (doesItemExist(item.getName())) {
+    		getItemByName(item.getName()).setQuantity(
+    				getItemByName(item.getName()).getQuantity() + item.getQuantity());
+    	}
+    	else {
+	    	
+	        rows.add(item);
+    	}
         log.debug("Added " + item.getName() + " quantity of " + item.getQuantity());
         fireTableDataChanged();
     }

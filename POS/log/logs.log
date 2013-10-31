@@ -1030,3 +1030,13 @@ INFO  PurchaseTab - Item adding cancelled
 INFO  PurchaseTab - New sale process started
 ERROR PurchaseItemPanel - java.lang.NumberFormatException: For input string: ""
 INFO  PurchaseTab - Sale cancelled
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 23:50:41 EET 2013
+INFO  PurchaseTab - New sale process started
+ERROR PurchaseItemPanel - java.lang.NumberFormatException: For input string: "a"
+INFO  PurchaseTab - Sale cancelled
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Sale cancelled
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Oct 31 23:51:19 EET 2013
+INFO  PurchaseTab - New sale process started
+ERROR ConfirmationPane - java.lang.NumberFormatException: empty String
+INFO  PurchaseTab - Sale complete

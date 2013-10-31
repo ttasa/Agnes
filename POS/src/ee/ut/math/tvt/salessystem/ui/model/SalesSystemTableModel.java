@@ -79,6 +79,15 @@ public abstract class SalesSystemTableModel<T extends DisplayableItem> extends
         throw new NoSuchElementException();
     }
 
+    public boolean doesItemExist(final String name) {
+    	boolean bool = false;
+        for (final T item : rows) {
+            if (item.getName() == name)
+                bool = true;
+        }
+        return bool;
+    }
+    
     public List<T> getTableRows() {
         return rows;
     }
