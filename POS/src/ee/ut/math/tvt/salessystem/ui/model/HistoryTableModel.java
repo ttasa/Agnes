@@ -9,32 +9,33 @@ import javax.swing.table.AbstractTableModel;
 
 import org.apache.log4j.Logger;
 
+import ee.ut.math.tvt.salessystem.domain.data.Sale;
 import ee.ut.math.tvt.salessystem.domain.data.SoldItem;
 
 public class HistoryTableModel extends AbstractTableModel {
 	private static final long serialVersionUID = 1L;
 
 	private static final Logger log = Logger.getLogger(PurchaseInfoTableModel.class);
-    protected List<List<SoldItem>> orders;
+    protected List<Sale> sales;
     protected List<String[]> rows;
     protected final String[] headers;
 	
 	public HistoryTableModel() {
 		headers = new String[] { "Date", "Time", "Total price" };
 		rows = new ArrayList<String[]>();
-		orders = new ArrayList<List<SoldItem>>();
+		sales = new ArrayList<Sale>();
 	}
 
-    public void addItem(final List<SoldItem> items) {
-    	String date = (new SimpleDateFormat("dd.MM.yyyy")).format(new Date());
-    	String time = (new SimpleDateFormat("HH:mm:ss")).format(new Date());
-        rows.add(new String[] { date, time, getItemsSum(items) });
-        orders.add(items);
+    public void addItem(final Sale sale) {
+    	String date = (new SimpleDateFormat("dd.MM.yyyy")).format(sale.getDate());
+    	String time = (new SimpleDateFormat("HH:mm:ss")).format(sale.getDate());
+        rows.add(new String[] { date, time, getSoldItemsSum(sale) });
+        sales.add(sale);
         fireTableDataChanged();
     }
 
-	public List<SoldItem> getOrders(int selectedRow) {
-		return orders.get(selectedRow);
+	public List<SoldItem> getSaleItems(int selectedRow) {
+		return sales.get(selectedRow).getSoldItems();
 	}
     
 	@Override
@@ -57,11 +58,11 @@ public class HistoryTableModel extends AbstractTableModel {
         return headers[columnIndex];
     }
     
-    private String getItemsSum(List<SoldItem> items) {
+    private String getSoldItemsSum(Sale sale) {
     	double sum = 0;
     	
-    	for (int i=0; i<items.size(); i++) {
-    		sum += items.get(i).getSum();
+    	for (SoldItem item : sale.getSoldItems()) {
+    		sum += item.getSum();
     	}
     	
     	return "" + sum;

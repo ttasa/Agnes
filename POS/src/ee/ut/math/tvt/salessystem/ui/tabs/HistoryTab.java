@@ -48,8 +48,7 @@ public class HistoryTab {
 				int selectedRow = infoTable.getSelectedRow();
 				if (selectedRow >= 0) {
 					itemsTableModel.populateWithData(model
-							.getHistoryTableModel().getOrders(selectedRow));
-					System.out.println(selectedRow);
+							.getHistoryTableModel().getSaleItems(selectedRow));
 				}
 			}
 

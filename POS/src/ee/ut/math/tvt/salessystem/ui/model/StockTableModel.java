@@ -108,8 +108,20 @@ public class StockTableModel extends SalesSystemTableModel<StockItem> {
 	}
 
 	public StockItem getItemByName(String name) {
-			//TODO name.get
+        for (final StockItem item : rows) {
+            if (item.getName() == name)
+                return item;
+        }
+		
 		return null;
+	}
+	
+	public void restoreQuantities(List<SoldItem> items) {
+		for (int i=0; i<items.size(); i++) {
+			SoldItem item = items.get(i);
+			getItemByName(item.getName()).setQuantity(
+					getItemByName(item.getName()).getQuantity() + item.getQuantity());
+		}
 	}
 
 }

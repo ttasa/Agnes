@@ -1,5 +1,6 @@
 package ee.ut.math.tvt.salessystem.ui.tabs;
 
+import ee.ut.math.tvt.salessystem.domain.data.Sale;
 import ee.ut.math.tvt.salessystem.domain.exception.VerificationFailedException;
 import ee.ut.math.tvt.salessystem.domain.controller.SalesDomainController;
 import ee.ut.math.tvt.salessystem.ui.model.SalesSystemModel;
@@ -144,7 +145,8 @@ public class PurchaseTab {
 
 	/** Event handler for the <code>cancel purchase</code> event. */
 	protected void cancelPurchaseButtonClicked() {
-
+		model.getWarehouseTableModel().restoreQuantities(
+				model.getCurrentPurchaseTableModel().getTableRows());
 		log.info("Sale cancelled");
 		try {
 			domainController.cancelCurrentPurchase();
@@ -166,7 +168,9 @@ public class PurchaseTab {
 				domainController.submitCurrentPurchase(model
 						.getCurrentPurchaseTableModel().getTableRows());
 				endSale();
-		    	model.getHistoryTableModel().addItem(model.getCurrentPurchaseTableModel().getTableRows());
+		    	model.getHistoryTableModel().addItem(
+		    			new Sale(model.getCurrentPurchaseTableModel().getTableRows())
+		    			);
 				model.getCurrentPurchaseTableModel().clear();
 			} catch (VerificationFailedException e1) {
 				log.error(e1.getMessage());
