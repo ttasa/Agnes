@@ -29,7 +29,7 @@ public class StockTab {
 
 	private JButton cancelButton;
 
-//	private JButton confirmButton;
+	// private JButton confirmButton;
 
 	private SalesSystemModel model;
 
@@ -73,15 +73,15 @@ public class StockTab {
 		panel.setLayout(new GridBagLayout());
 
 		addItem = createAddItemButton();
-//		confirmButton = createConfirmButton();
+		// confirmButton = createConfirmButton();
 		cancelButton = createCancelButton();
 
 		// Add the menu
 		panel.add(addItem, getConstraintsForMenuButtons());
-//		panel.add(confirmButton, getConstraintsForMenuButtons());
+		// panel.add(confirmButton, getConstraintsForMenuButtons());
 		panel.add(cancelButton, getConstraintsForMenuButtons());
 
-//		confirmButton.setEnabled(false);
+		// confirmButton.setEnabled(false);
 		cancelButton.setEnabled(false);
 
 		return panel;
@@ -110,16 +110,16 @@ public class StockTab {
 		return b;
 	}
 
-//	// create the confirm button
-//	private JButton createConfirmButton() {
-//		JButton b = new JButton("Confirm");
-//		b.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				confirmButtonClicked();
-//			}
-//		});
-//		return b;
-//	}
+	// // create the confirm button
+	// private JButton createConfirmButton() {
+	// JButton b = new JButton("Confirm");
+	// b.addActionListener(new ActionListener() {
+	// public void actionPerformed(ActionEvent e) {
+	// confirmButtonClicked();
+	// }
+	// });
+	// return b;
+	// }
 
 	// create the cancel button
 	private JButton createCancelButton() {
@@ -155,39 +155,39 @@ public class StockTab {
 		}
 	}
 
-//	/** Event handler for the <code>confirm adding</code> event. */
-//	protected void confirmButtonClicked() {
-//		log.info("Added item");
-//		try {
-//			domainController.confirmItemAdd();
-//			confirmAdd();
-//			model.getCurrentPurchaseTableModel().clear();
-//		} catch (VerificationFailedException e1) {
-//			log.error(e1.getMessage());
-//		}
-//	}
+	// /** Event handler for the <code>confirm adding</code> event. */
+	// protected void confirmButtonClicked() {
+	// log.info("Added item");
+	// try {
+	// domainController.confirmItemAdd();
+	// confirmAdd();
+	// model.getCurrentPurchaseTableModel().clear();
+	// } catch (VerificationFailedException e1) {
+	// log.error(e1.getMessage());
+	// }
+	// }
 
 	// switch UI to the state that allows to initiate new purchase
 	private void cancelAdd() {
 		warehousePane.reset();
 
 		cancelButton.setEnabled(false);
-//		confirmButton.setEnabled(false);
+		// confirmButton.setEnabled(false);
 		addItem.setEnabled(true);
 		warehousePane.setEnabled(false);
 	}
 
-//	// switch UI to the state that allows to initiate new purchase
-//	private void confirmAdd() {
-//		model.getWarehouseTableModel().addItem(new StockItem());
-//		
-//		warehousePane.reset();
-//
-//		cancelButton.setEnabled(false);
-//		confirmButton.setEnabled(false);
-//		addItem.setEnabled(true);
-//		warehousePane.setEnabled(false);
-//	}
+	// // switch UI to the state that allows to initiate new purchase
+	// private void confirmAdd() {
+	// model.getWarehouseTableModel().addItem(new StockItem());
+	//
+	// warehousePane.reset();
+	//
+	// cancelButton.setEnabled(false);
+	// confirmButton.setEnabled(false);
+	// addItem.setEnabled(true);
+	// warehousePane.setEnabled(false);
+	// }
 
 	// go to item adding mode
 	private void startAdd() {
@@ -195,7 +195,7 @@ public class StockTab {
 
 		warehousePane.setEnabled(true);
 		addItem.setEnabled(false);
-//		confirmButton.setEnabled(true);
+		// confirmButton.setEnabled(true);
 		cancelButton.setEnabled(true);
 	}
 

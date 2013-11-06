@@ -17,7 +17,7 @@ public class StockTableModel extends SalesSystemTableModel<StockItem> {
 	private static final Logger log = Logger.getLogger(StockTableModel.class);
 
 	public StockTableModel() {
-		super(new String[] {"Id", "Name", "Price", "Quantity"});
+		super(new String[] { "Id", "Name", "Price", "Quantity" });
 	}
 
 	@Override
@@ -34,43 +34,41 @@ public class StockTableModel extends SalesSystemTableModel<StockItem> {
 		}
 		throw new IllegalArgumentException("Column index out of range");
 	}
-	
-	public double getNewQuantity(StockItem stockItem, final double quantity ){
+
+	public double getNewQuantity(StockItem stockItem, final double quantity) {
 		StockItem item = getItemById(stockItem.getId());
 		double newQuantity = item.getQuantity() - quantity;
-		
+
 		return newQuantity;
 	}
-	
-	
-	public void removeQuantity(StockItem stockItem, final int quantity){
-	
+
+	public void removeQuantity(StockItem stockItem, final int quantity) {
+
 		try {
 			StockItem item = getItemById(stockItem.getId());
-			double newQuantity=item.getQuantity() - quantity;
-			if (newQuantity<0){
+			double newQuantity = item.getQuantity() - quantity;
+			if (newQuantity < 0) {
 				log.warn("The warehouse doesn't have that many items ");
-				
+
+			} else {
+				item.setQuantity((int) newQuantity);
+
+				log.debug("Found existing item " + stockItem.getName()
+						+ " decreased quantity by " + stockItem.getQuantity());
 			}
-			else{
-			item.setQuantity((int) newQuantity);
-			
-			
-			log.debug("Found existing item " + stockItem.getName()
-					+ " decreased quantity by " + stockItem.getQuantity());
-			}
-			}
-		catch (NoSuchElementException e) {
+		} catch (NoSuchElementException e) {
 			rows.add(stockItem);
-			log.debug("Added " + stockItem.getName()
-					+ " quantity of " + stockItem.getQuantity());
+			log.debug("Added " + stockItem.getName() + " quantity of "
+					+ stockItem.getQuantity());
 
 		}
 		fireTableDataChanged();
 	}
+
 	/**
-	 * Add new stock item to table. If there already is a stock item with
-	 * same id, then existing item's quantity will be increased.
+	 * Add new stock item to table. If there already is a stock item with same
+	 * id, then existing item's quantity will be increased.
+	 * 
 	 * @param stockItem
 	 */
 	public void addItem(final StockItem stockItem) {
@@ -79,11 +77,10 @@ public class StockTableModel extends SalesSystemTableModel<StockItem> {
 			item.setQuantity(item.getQuantity() + stockItem.getQuantity());
 			log.debug("Found existing item " + stockItem.getName()
 					+ " increased quantity by " + stockItem.getQuantity());
-		}
-		catch (NoSuchElementException e) {
+		} catch (NoSuchElementException e) {
 			rows.add(stockItem);
-			log.debug("Added " + stockItem.getName()
-					+ " quantity of " + stockItem.getQuantity());
+			log.debug("Added " + stockItem.getName() + " quantity of "
+					+ stockItem.getQuantity());
 		}
 		fireTableDataChanged();
 	}
@@ -108,19 +105,20 @@ public class StockTableModel extends SalesSystemTableModel<StockItem> {
 	}
 
 	public StockItem getItemByName(String name) {
-        for (final StockItem item : rows) {
-            if (item.getName() == name)
-                return item;
-        }
-		
+		for (final StockItem item : rows) {
+			if (item.getName() == name)
+				return item;
+		}
+
 		return null;
 	}
-	
+
 	public void restoreQuantities(List<SoldItem> items) {
-		for (int i=0; i<items.size(); i++) {
+		for (int i = 0; i < items.size(); i++) {
 			SoldItem item = items.get(i);
 			getItemByName(item.getName()).setQuantity(
-					getItemByName(item.getName()).getQuantity() + item.getQuantity());
+					getItemByName(item.getName()).getQuantity()
+							+ item.getQuantity());
 		}
 	}
 

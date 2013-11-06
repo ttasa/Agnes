@@ -20,7 +20,6 @@ import javax.swing.JPanel;
 
 import org.apache.log4j.Logger;
 
-
 /**
  * Encapsulates everything that has to do with the purchase tab (the tab
  * labelled "Point-of-sale" in the menu).
@@ -168,18 +167,18 @@ public class PurchaseTab {
 				domainController.submitCurrentPurchase(model
 						.getCurrentPurchaseTableModel().getTableRows());
 				endSale();
-		    	model.getHistoryTableModel().addItem(
-		    			new Sale(model.getCurrentPurchaseTableModel().getTableRows())
-		    			);
+				model.getHistoryTableModel().addItem(
+						new Sale(model.getCurrentPurchaseTableModel()
+								.getTableRows()));
 				model.getCurrentPurchaseTableModel().clear();
 			} catch (VerificationFailedException e1) {
 				log.error(e1.getMessage());
 			}
-		}
-		else {
+		} else {
 			purchasePane.getConfirmationPane().setVisible(true);
 			setOrderButtonsEnabledTo(false);
-			purchasePane.getConfirmationPane().processPurchase(this, model.getCurrentPurchaseTableModel().getTableRows());
+			purchasePane.getConfirmationPane().processPurchase(this,
+					model.getCurrentPurchaseTableModel().getTableRows());
 		}
 	}
 
@@ -192,7 +191,7 @@ public class PurchaseTab {
 	private void startNewSale() {
 
 		purchasePane.reset();
-		
+
 		setOrderButtonsEnabledTo(true);
 		newPurchase.setEnabled(false);
 	}
@@ -200,11 +199,11 @@ public class PurchaseTab {
 	// switch UI to the state that allows to initiate new purchase
 	private void endSale() {
 		purchasePane.reset();
-		
+
 		setOrderButtonsEnabledTo(false);
 		newPurchase.setEnabled(true);
 	}
-	
+
 	public void setOrderButtonsEnabledTo(boolean value) {
 		purchasePane.setEnabled(value);
 		submitPurchase.setEnabled(value);

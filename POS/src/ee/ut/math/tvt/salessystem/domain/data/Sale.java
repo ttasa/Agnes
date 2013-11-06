@@ -15,27 +15,30 @@ import javax.persistence.Table;
 @Table(name = "SALE")
 public class Sale {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(name = "SALE_DATE")
-    private Date date;
-    
-    @OneToMany(mappedBy = "sale")
-    private List<SoldItem> soldItems;
-    
-    public Sale(List<SoldItem> soldItems) {
-        this.soldItems = soldItems;
-        this.date = new Date();
-    }
-    
-    public Date getDate() {
-    	return date;
-    }
-    
-    public List<SoldItem> getSoldItems() {
-    	return soldItems;
-    }
-    
+	@Column(name = "SALE_DATE")
+	private Date date;
+
+	@OneToMany(mappedBy = "sale")
+	private List<SoldItem> soldItems;
+
+	public Sale() {
+	}
+
+	public Sale(List<SoldItem> soldItems) {
+		this.soldItems = soldItems;
+		this.date = new Date();
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public List<SoldItem> getSoldItems() {
+		return soldItems;
+	}
+
 }
