@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import ee.ut.math.tvt.salessystem.domain.data.SoldItem;
+import ee.ut.math.tvt.salessystem.domain.data.StockItem;
 import ee.ut.math.tvt.salessystem.ui.SalesSystemUI;
 
 /**
@@ -12,25 +13,26 @@ import ee.ut.math.tvt.salessystem.ui.SalesSystemUI;
  */
 public class PurchaseInfoTableModel extends SalesSystemTableModel<SoldItem> {
 	private static final long serialVersionUID = 1L;
-
+	private StockItem stockitem;
 	private static final Logger log = Logger.getLogger(PurchaseInfoTableModel.class);
 	
 	public PurchaseInfoTableModel() {
-		super(new String[] { "Id", "Name", "Price", "Quantity","Sum"});
+		//Removed ID from that list
+		super(new String[] { "Name", "Price", "Quantity","Sum"});
 	}
 
 	@Override
 	protected Object getColumnValue(SoldItem item, int columnIndex) {
 		switch (columnIndex) {
+		//case 0:
+		//	return item.getId();
 		case 0:
-			return item.getId();
-		case 1:
 			return item.getName();
-		case 2:
+		case 1:
 			return item.getPrice();
-		case 3:
+		case 2:
 			return item.getQuantity();
-		case 4:
+		case 3:
 			return item.getSum();
 		}
 	
