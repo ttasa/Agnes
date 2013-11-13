@@ -10,10 +10,10 @@ import java.util.NoSuchElementException;
 import org.apache.log4j.Logger;
 
 import ee.ut.math.tvt.salessystem.domain.controller.SalesDomainController;
-import ee.ut.math.tvt.salessystem.domain.exception.VerificationFailedException;
-
+import ee.ut.math.tvt.salessystem.domain.data.Sale;
 import ee.ut.math.tvt.salessystem.domain.data.SoldItem;
 import ee.ut.math.tvt.salessystem.domain.data.StockItem;
+import ee.ut.math.tvt.salessystem.domain.exception.VerificationFailedException;
 
 /**
  * A simple CLI (limited functionality).
@@ -121,7 +121,7 @@ public class ConsoleUI {
 			    for(StockItem stockItem : cart) {
 			        soldItems.add(new SoldItem(stockItem, stockItem.getQuantity()));
 			    }
-				dc.submitCurrentPurchase(soldItems);
+				dc.submitCurrentPurchase(new Sale(soldItems));
 				cart.clear();
 			} catch (VerificationFailedException e) {
 				log.error(e.getMessage());

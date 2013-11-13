@@ -1,11 +1,5 @@
 package ee.ut.math.tvt.salessystem.ui.tabs;
 
-import ee.ut.math.tvt.salessystem.domain.data.Sale;
-import ee.ut.math.tvt.salessystem.domain.exception.VerificationFailedException;
-import ee.ut.math.tvt.salessystem.domain.controller.SalesDomainController;
-import ee.ut.math.tvt.salessystem.ui.model.SalesSystemModel;
-import ee.ut.math.tvt.salessystem.ui.panels.PurchaseItemPanel;
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
@@ -15,10 +9,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 import org.apache.log4j.Logger;
+
+import ee.ut.math.tvt.salessystem.domain.controller.SalesDomainController;
+import ee.ut.math.tvt.salessystem.domain.data.Sale;
+import ee.ut.math.tvt.salessystem.domain.exception.VerificationFailedException;
+import ee.ut.math.tvt.salessystem.ui.model.SalesSystemModel;
+import ee.ut.math.tvt.salessystem.ui.panels.PurchaseItemPanel;
 
 /**
  * Encapsulates everything that has to do with the purchase tab (the tab
@@ -162,14 +161,12 @@ public class PurchaseTab {
 			purchasePane.getConfirmationPane().setVisible(false);
 			log.info("Sale complete");
 			try {
+				Sale sale = new Sale(model.getCurrentPurchaseTableModel().getTableRows());
 				log.debug("Contents of the current basket:\n"
 						+ model.getCurrentPurchaseTableModel());
-				domainController.submitCurrentPurchase(model
-						.getCurrentPurchaseTableModel().getTableRows());
+				domainController.submitCurrentPurchase(sale);
 				endSale();
-				model.getHistoryTableModel().addItem(
-						new Sale(model.getCurrentPurchaseTableModel()
-								.getTableRows()));
+				model.getHistoryTableModel().addItem(sale);
 				model.getCurrentPurchaseTableModel().clear();
 			} catch (VerificationFailedException e1) {
 				log.error(e1.getMessage());

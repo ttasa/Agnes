@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -18,13 +17,16 @@ import javax.swing.event.DocumentListener;
 import org.apache.log4j.Logger;
 
 import ee.ut.math.tvt.salessystem.domain.data.SoldItem;
-import ee.ut.math.tvt.salessystem.domain.exception.VerificationFailedException;
 import ee.ut.math.tvt.salessystem.ui.model.SalesSystemModel;
 import ee.ut.math.tvt.salessystem.ui.tabs.PurchaseTab;
 
 public class ConfirmationPane extends JPanel {
 
-    JTextField paymentField;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	JTextField paymentField;
     JTextField sumField;
     JTextField changeField;
     JButton acceptButton;
@@ -150,7 +152,7 @@ public class ConfirmationPane extends JPanel {
 			}
 		} 
 		catch (NumberFormatException ex) {
-			log.error(ex);
+			//Ei tundu olevat logimist v‰‰rt
 		}
 		return "";
     }

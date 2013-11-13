@@ -1,3 +1,6 @@
 /bin
-/bin
-/bin
+/build
+/log
+/data/*.tmp
+/data/*.lck
+/data/*.log

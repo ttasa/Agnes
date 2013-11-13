@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ee.ut.math.tvt.salessystem.domain.controller.SalesDomainController;
-import ee.ut.math.tvt.salessystem.domain.data.SoldItem;
+import ee.ut.math.tvt.salessystem.domain.data.Sale;
 import ee.ut.math.tvt.salessystem.domain.data.StockItem;
 import ee.ut.math.tvt.salessystem.domain.exception.VerificationFailedException;
 import ee.ut.math.tvt.salessystem.service.HibernateDataService;
@@ -19,11 +19,12 @@ public class SalesDomainControllerImpl implements SalesDomainController {
 	
 	private static HibernateDataService service = new HibernateDataService() ;
 	
-	public void submitCurrentPurchase(List<SoldItem> goods) throws VerificationFailedException {
-		// Let's assume we have checked and found out that the buyer is underaged and
-		// cannot buy chupa-chups
-		//throw new VerificationFailedException("Underaged!");
-		// XXX - Save purchase
+	public void submitCurrentPurchase(Sale sale) throws VerificationFailedException {
+		List<Object> insertableObjects = new ArrayList<Object>();
+		insertableObjects.add(sale);
+		insertableObjects.addAll(sale.getSoldItems());
+		
+		service.insert(insertableObjects);
 	}
 
 	public void cancelCurrentPurchase() throws VerificationFailedException {
@@ -34,8 +35,11 @@ public class SalesDomainControllerImpl implements SalesDomainController {
 		// XXX - Start adding items to warehouse
 	}
 	
-	public void confirmItemAdd() throws VerificationFailedException{
-		// XXX - Add item to the warehouse
+	public void confirmItemAdd(StockItem item) throws VerificationFailedException{
+		List<Object> insertableObject = new ArrayList<Object>();
+		insertableObject.add(item);
+		
+		service.insert(insertableObject);
 	}
 
 	public void cancelItemAdd() throws VerificationFailedException{

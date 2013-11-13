@@ -1,18 +1,10 @@
 package ee.ut.math.tvt.salessystem.ui.panels;
 
-import ee.ut.math.tvt.Agnes.Intro;
-import ee.ut.math.tvt.salessystem.domain.data.SoldItem;
-import ee.ut.math.tvt.salessystem.domain.data.StockItem;
-import ee.ut.math.tvt.salessystem.ui.model.SalesSystemModel;
-import ee.ut.math.tvt.salessystem.ui.panels.panes.ConfirmationPane;
-
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.util.NoSuchElementException;
 
 import javax.swing.BorderFactory;
@@ -27,6 +19,11 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import org.apache.log4j.Logger;
+
+import ee.ut.math.tvt.salessystem.domain.data.SoldItem;
+import ee.ut.math.tvt.salessystem.domain.data.StockItem;
+import ee.ut.math.tvt.salessystem.ui.model.SalesSystemModel;
+import ee.ut.math.tvt.salessystem.ui.panels.panes.ConfirmationPane;
 
 /**
  * Purchase pane + shopping cart table UI.
@@ -175,13 +172,16 @@ public class PurchaseItemPanel extends JPanel {
     
     private StockItem getStockItemByName() {
         try {
-            int code = nameField.getSelectedIndex()+1;
-            return model.getWarehouseTableModel().getItemById(code);
+            int code = nameField.getSelectedIndex();
+            return model.getWarehouseTableModel().getTableRows().get(code);
         } catch (NumberFormatException ex) {
             return null;
         } catch (NoSuchElementException ex) {
             return null;
+        } catch (IndexOutOfBoundsException ex) {
+            return null;
         }
+        
     }
     
 
@@ -197,19 +197,16 @@ public class PurchaseItemPanel extends JPanel {
             int quantity = 0;
             try {
                 quantity = Integer.parseInt(quantityField.getText());
+                if (quantity > 0) {
+                	if (model.getWarehouseTableModel().getNewQuantity(stockItem, quantity) >= 0) {
+                		model.getCurrentPurchaseTableModel().addItem(new SoldItem(stockItem, quantity));
+                		model.getWarehouseTableModel().removeQuantity(stockItem,quantity);
+                	}
+                	else {
+                		JOptionPane.showMessageDialog(null, "Not so much left in warehouse!");
+                	}
+                }
             } catch (NumberFormatException ex) {
-               log.error(ex);
-            }
-            if (quantity > 0) {
-            	if (model.getWarehouseTableModel().getNewQuantity(stockItem, quantity) >= 0) {
-            		model.getCurrentPurchaseTableModel().addItem(new SoldItem(stockItem, quantity));
-            		model.getWarehouseTableModel().removeQuantity(stockItem,quantity);
-            	}
-            	else {
-            		JOptionPane.showMessageDialog(null, "Not so much left in warehouse!");
-            	}
-            }
-            else {
             	JOptionPane.showMessageDialog(null, "Bad quantity!");
             }
           

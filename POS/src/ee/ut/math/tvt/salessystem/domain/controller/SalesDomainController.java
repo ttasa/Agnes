@@ -2,7 +2,7 @@ package ee.ut.math.tvt.salessystem.domain.controller;
 
 import java.util.List;
 
-import ee.ut.math.tvt.salessystem.domain.data.SoldItem;
+import ee.ut.math.tvt.salessystem.domain.data.Sale;
 import ee.ut.math.tvt.salessystem.domain.data.StockItem;
 import ee.ut.math.tvt.salessystem.domain.exception.VerificationFailedException;
 
@@ -43,7 +43,7 @@ public interface SalesDomainController {
      *            Goods that the buyer has chosen to buy.
      * @throws VerificationFailedException
      */
-    public void submitCurrentPurchase(List<SoldItem> goods)
+    public void submitCurrentPurchase(Sale sale)
             throws VerificationFailedException;
 
     /**
@@ -58,7 +58,7 @@ public interface SalesDomainController {
      * 
      * @throws VerificationFailedException
      */
-    public void confirmItemAdd() throws VerificationFailedException;
+    public void confirmItemAdd(StockItem item) throws VerificationFailedException;
     
     /**
      * Rollback business transaction - purchase of goods.

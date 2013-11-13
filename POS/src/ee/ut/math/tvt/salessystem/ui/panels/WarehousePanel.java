@@ -1,18 +1,13 @@
 package ee.ut.math.tvt.salessystem.ui.panels;
-import ee.ut.math.tvt.salessystem.domain.data.StockItem;
-import ee.ut.math.tvt.salessystem.ui.model.SalesSystemModel;
-import ee.ut.math.tvt.salessystem.ui.tabs.PurchaseTab;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Arrays;
 import java.util.NoSuchElementException;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -24,11 +19,19 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+
 import org.apache.log4j.Logger;
+
+import ee.ut.math.tvt.salessystem.domain.controller.SalesDomainController;
+import ee.ut.math.tvt.salessystem.domain.data.StockItem;
+import ee.ut.math.tvt.salessystem.domain.exception.VerificationFailedException;
+import ee.ut.math.tvt.salessystem.ui.model.SalesSystemModel;
+import ee.ut.math.tvt.salessystem.ui.tabs.PurchaseTab;
 /**
  * Warehouse pane + warehouse table UI.
  */
 public class WarehousePanel extends JPanel {
+	private final SalesDomainController domainController;
 	private static final Logger log = Logger.getLogger(PurchaseTab.class);
 	private static final long serialVersionUID = 1L;
 	// Text field on the dialogPane
@@ -45,12 +48,13 @@ public class WarehousePanel extends JPanel {
 	 * @param model
 	 *            composite model of the warehouse and the warehouse table.
 	 */
-	public WarehousePanel(SalesSystemModel model) {
+	public WarehousePanel(SalesDomainController controller, SalesSystemModel model) {
 		this.model = model;
 		setLayout(new GridBagLayout());
 		add(drawDialogPane(), getDialogPaneConstraints());
 		add(drawBasketPane(), getBasketPaneConstraints());
 		setEnabled(false);
+		this.domainController = controller;
 	}
 	// warehouse pane
 	private JComponent drawBasketPane() {
@@ -131,8 +135,8 @@ public class WarehousePanel extends JPanel {
 		priceField.setEditable(true);
 		// == Add components to the panel
 		// - bar code
-		panel.add(new JLabel("Bar code:"));
-		panel.add(barCodeField);
+		//panel.add(new JLabel("Bar code:"));
+		//panel.add(barCodeField);
 		// - amount
 		panel.add(new JLabel("Amount:"));
 		panel.add(quantityField);
@@ -167,7 +171,7 @@ public class WarehousePanel extends JPanel {
 	public void fillDialogFields() {
 		StockItem stockItem = getStockItemByName();
 		if (stockItem != null) {
-			barCodeField.setText(String.valueOf(stockItem.getId()));
+			//barCodeField.setText(String.valueOf(stockItem.getId()));
 			String priceString = String.valueOf(stockItem.getPrice());
 			priceField.setText(priceString);
 		} else {
@@ -192,7 +196,7 @@ public class WarehousePanel extends JPanel {
 		double price=0;
 		int quantity=0;
 		try {
-			barCode = Long.parseLong(barCodeField.getText());
+			//barCode = Long.parseLong(barCodeField.getText());
 			price = Double.parseDouble(priceField.getText());
 			quantity = Integer.parseInt(quantityField.getText());
 		} catch (Exception e) {
@@ -210,9 +214,14 @@ public class WarehousePanel extends JPanel {
 			// if(Arrays.asList(model.getWarehouseTableModel().getProductNames()).contains(name)){
 			// model.getWarehouseTableModel().addItem(model.getWarehouseTableModel().getItemByName(name));
 			// }
-			model.getWarehouseTableModel().addItem(stockItem);
+			try {
+				model.getWarehouseTableModel().addItem(stockItem);
+				domainController.confirmItemAdd(stockItem);
+				log.info("Added new item");
+			} catch (VerificationFailedException e) {
+				log.error(e);;
+			}
 		}
-		log.info("Added new item");
 	}
 	/**
 	 * Sets whether or not this component is enabled.

@@ -24,13 +24,15 @@ public class Sale {
 
 	@OneToMany(mappedBy = "sale")
 	private List<SoldItem> soldItems;
-
+	
 	public Sale() {
 	}
-
+	
 	public Sale(List<SoldItem> soldItems) {
 		this.soldItems = soldItems;
 		this.date = new Date();
+		for (SoldItem soldItem : soldItems)
+			soldItem.setSale(this);
 	}
 
 	public Date getDate() {
@@ -41,4 +43,8 @@ public class Sale {
 		return soldItems;
 	}
 
+	public Long getID() {
+		return id;
+	}
+	
 }
