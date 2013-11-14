@@ -36,6 +36,7 @@ public class Intro {
 				e.printStackTrace();
 			}
 			introUI.setFrameVisibilityTo(false);
+			
 			final SalesSystemUI ui = new SalesSystemUI(domainController);
 			
 			ui.setVisible(true);
