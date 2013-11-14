@@ -37,6 +37,7 @@ public class Intro {
 			}
 			introUI.setFrameVisibilityTo(false);
 			final SalesSystemUI ui = new SalesSystemUI(domainController);
+			
 			ui.setVisible(true);
 			
 		log.info("Intro window opened from " + log.getName() + " at " + new Date());
