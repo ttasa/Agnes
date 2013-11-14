@@ -18,7 +18,6 @@ public class HibernateDataService {
 	private Session session = HibernateUtil.currentSession();
 	private static final Logger log = Logger.getLogger(Intro.class);
 
-
 	public List<Sale> getSales() {
 		List<Sale> result = session.createQuery("from Sale").list();
 		return result;
@@ -47,6 +46,7 @@ public class HibernateDataService {
 				transaction.rollback();
 			log.error(e);
 		}
+		session.flush();
 	}
 
 }

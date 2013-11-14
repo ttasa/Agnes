@@ -54,8 +54,6 @@ public class SalesDomainControllerImpl implements SalesDomainController {
 		List<StockItem> dataset = service.getStockItems();
 		return dataset;
 	}
-
-		
 	
 	public void endSession() {
 		HibernateUtil.closeSession();

@@ -4,13 +4,17 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.swing.table.AbstractTableModel;
 
 import org.apache.log4j.Logger;
 
+import com.sun.corba.se.impl.encoding.EncapsInputStream;
+
 import ee.ut.math.tvt.salessystem.domain.data.Sale;
 import ee.ut.math.tvt.salessystem.domain.data.SoldItem;
 import ee.ut.math.tvt.salessystem.service.HibernateDataService;
+import ee.ut.math.tvt.salessystem.util.HibernateUtil;
 
 public class HistoryTableModel extends AbstractTableModel {
 	private static final long serialVersionUID = 1L;
@@ -47,10 +51,11 @@ public class HistoryTableModel extends AbstractTableModel {
 		List<Sale> dataset = service.getSales();
 		sales.clear();
 		rows.clear();
+		
 		for (Sale i : dataset) {
 			addItem(i);
 		}
-
+		
 	}
 
 	@Override

@@ -5,9 +5,11 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import javax.swing.BorderFactory;
+import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
@@ -20,8 +22,10 @@ import javax.swing.JTextField;
 
 import org.apache.log4j.Logger;
 
+import ee.ut.math.tvt.salessystem.domain.data.Sale;
 import ee.ut.math.tvt.salessystem.domain.data.SoldItem;
 import ee.ut.math.tvt.salessystem.domain.data.StockItem;
+import ee.ut.math.tvt.salessystem.service.HibernateDataService;
 import ee.ut.math.tvt.salessystem.ui.model.SalesSystemModel;
 import ee.ut.math.tvt.salessystem.ui.panels.panes.ConfirmationPane;
 
@@ -44,7 +48,10 @@ public class PurchaseItemPanel extends JPanel {
 
     // Warehouse model
     private SalesSystemModel model;
-
+    
+    //Database service
+    private static HibernateDataService service = new HibernateDataService();
+	private List<String> stockItemNames;
     
     
     /**
@@ -95,11 +102,13 @@ public class PurchaseItemPanel extends JPanel {
         panel.setLayout(new GridLayout(5, 2));
         panel.setBorder(BorderFactory.createTitledBorder("Product"));
      
-        String[] productNames = model.getWarehouseTableModel().getProductNames();
+//        String[] productNames = model.getWarehouseTableModel().getProductNames();
 
         barCodeField = new JTextField();
         quantityField = new JTextField("");
-        nameField = new JComboBox<String>(productNames);
+        
+        nameField = new JComboBox<String>();
+        
         priceField = new JTextField();
 
         barCodeField.setEditable(false);
@@ -134,15 +143,11 @@ public class PurchaseItemPanel extends JPanel {
             }
         });
         
-//        nameField.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                comboBoxEventHandler();
-//            }
-//        });
-        
         nameField.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                
+            	for (int i = 0; i < service.getStockItems().size();i++){
+                	nameField.addItem(service.getStockItems().get(i).getName());
+                }
             	fillDialogFields();
             	quantityField.setText("");
             }

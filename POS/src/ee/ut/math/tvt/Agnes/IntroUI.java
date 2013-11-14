@@ -55,7 +55,6 @@ public class IntroUI extends JFrame {
 		
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
-		f.setLocationRelativeTo(null);
 		f.setLayout(new BorderLayout());
 		f.setResizable(false);
 		
@@ -76,6 +75,7 @@ public class IntroUI extends JFrame {
 		f.add(p, BorderLayout.WEST);
 		f.add(pic, BorderLayout.EAST);
 		f.pack();
+		f.setLocationRelativeTo(null);
 	}
 	
 	public void setFrameVisibilityTo(boolean value) {

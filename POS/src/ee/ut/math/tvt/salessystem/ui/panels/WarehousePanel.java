@@ -101,7 +101,6 @@ public class WarehousePanel extends JPanel {
 					model.getWarehouseTableModel().getItemById(
 							Long.parseLong(barCodeField.getText()));
 					if (!barCodeField.getText().equals("")) {
-						nameField.setEnabled(false);
 						nameField.setText(model
 								.getWarehouseTableModel()
 								.getItemById(
