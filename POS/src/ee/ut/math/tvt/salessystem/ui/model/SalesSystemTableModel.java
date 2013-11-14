@@ -81,7 +81,7 @@ public abstract class SalesSystemTableModel<T extends DisplayableItem> extends
 	public boolean doesItemExist(final String name) {
 		boolean bool = false;
 		for (final T item : rows) {
-			if (item.getName() == name)
+			if (item.getName().equals(name))
 				bool = true;
 		}
 		return bool;

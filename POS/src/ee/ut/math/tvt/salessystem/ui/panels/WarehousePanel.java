@@ -215,11 +215,16 @@ public class WarehousePanel extends JPanel {
 			// model.getWarehouseTableModel().addItem(model.getWarehouseTableModel().getItemByName(name));
 			// }
 			try {
+				if (model.getWarehouseTableModel().doesItemExist(name)) {
+					throw new VerificationFailedException();
+				}
 				model.getWarehouseTableModel().addItem(stockItem);
 				domainController.confirmItemAdd(stockItem);
 				log.info("Added new item");
 			} catch (VerificationFailedException e) {
-				log.error(e);;
+				JOptionPane.showMessageDialog(getRootPane(), "Illegal move", "STOP", JOptionPane.WARNING_MESSAGE, null);
+				log.error(e);
+				return;
 			}
 		}
 	}

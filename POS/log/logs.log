@@ -3216,3 +3216,221 @@ INFO  ASTQueryTranslatorFactory - HHH000397: Using ASTQueryTranslatorFactory
 INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Nov 14 00:27:12 EET 2013
 INFO  PurchaseTab - New sale process started
 INFO  PurchaseTab - Sale cancelled
+INFO  ENGINE - checkpointClose start
+INFO  ENGINE - checkpointClose end
+INFO  Version - HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+INFO  Version - HHH000412: Hibernate Core {4.1.7.Final}
+INFO  Environment - HHH000206: hibernate.properties not found
+INFO  Environment - HHH000021: Bytecode provider name : javassist
+INFO  Configuration - HHH000043: Configuring from resource: /hibernate.cfg.xml
+INFO  Configuration - HHH000040: Configuration resource: /hibernate.cfg.xml
+WARN  DTDEntityResolver - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+INFO  Configuration - HHH000041: Configured SessionFactory: null
+INFO  DriverManagerConnectionProviderImpl - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+INFO  DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 1
+INFO  DriverManagerConnectionProviderImpl - HHH000006: Autocommit mode: false
+INFO  DriverManagerConnectionProviderImpl - HHH000401: using driver [org.hsqldb.jdbcDriver] at URL [jdbc:hsqldb:hsql://localhost/POS]
+INFO  DriverManagerConnectionProviderImpl - HHH000046: Connection properties: {user=sa, password=****}
+INFO  Dialect - HHH000400: Using dialect: org.hibernate.dialect.HSQLDialect
+INFO  TransactionFactoryInitiator - HHH000399: Using default transaction strategy (direct JDBC transactions)
+INFO  ASTQueryTranslatorFactory - HHH000397: Using ASTQueryTranslatorFactory
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Nov 14 15:28:47 EET 2013
+INFO  ENGINE - Database closed
+INFO  ENGINE - Database closed
+INFO  ENGINE - Database closed
+INFO  ENGINE - Database closed
+INFO  ENGINE - checkpointClose start
+INFO  ENGINE - checkpointClose end
+INFO  ENGINE - Database closed
+INFO  ENGINE - checkpointClose start
+INFO  ENGINE - checkpointClose end
+INFO  ENGINE - checkpointClose start
+INFO  ENGINE - checkpointClose end
+INFO  ENGINE - checkpointClose start
+INFO  ENGINE - checkpointClose end
+INFO  ENGINE - checkpointClose start
+INFO  ENGINE - checkpointClose end
+INFO  Version - HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+INFO  Version - HHH000412: Hibernate Core {4.1.7.Final}
+INFO  Environment - HHH000206: hibernate.properties not found
+INFO  Environment - HHH000021: Bytecode provider name : javassist
+INFO  Configuration - HHH000043: Configuring from resource: /hibernate.cfg.xml
+INFO  Configuration - HHH000040: Configuration resource: /hibernate.cfg.xml
+WARN  DTDEntityResolver - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+INFO  Configuration - HHH000041: Configured SessionFactory: null
+INFO  DriverManagerConnectionProviderImpl - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+INFO  DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 1
+INFO  DriverManagerConnectionProviderImpl - HHH000006: Autocommit mode: false
+INFO  DriverManagerConnectionProviderImpl - HHH000401: using driver [org.hsqldb.jdbcDriver] at URL [jdbc:hsqldb:hsql://localhost/POS]
+INFO  DriverManagerConnectionProviderImpl - HHH000046: Connection properties: {user=sa, password=****}
+WARN  JdbcServicesImpl - HHH000342: Could not obtain connection to query metadata : java.net.ConnectException: Connection refused: connect
+INFO  Dialect - HHH000400: Using dialect: org.hibernate.dialect.HSQLDialect
+INFO  LobCreatorBuilder - HHH000422: Disabling contextual LOB creation as connection was null
+INFO  TransactionFactoryInitiator - HHH000399: Using default transaction strategy (direct JDBC transactions)
+INFO  ASTQueryTranslatorFactory - HHH000397: Using ASTQueryTranslatorFactory
+WARN  SqlExceptionHelper - SQL Error: -1301, SQLState: 08001
+ERROR SqlExceptionHelper - java.net.ConnectException: Connection refused: connect
+INFO  ENGINE - checkpointClose start
+INFO  ENGINE - checkpointClose end
+INFO  Version - HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+INFO  Version - HHH000412: Hibernate Core {4.1.7.Final}
+INFO  Environment - HHH000206: hibernate.properties not found
+INFO  Environment - HHH000021: Bytecode provider name : javassist
+INFO  Configuration - HHH000043: Configuring from resource: /hibernate.cfg.xml
+INFO  Configuration - HHH000040: Configuration resource: /hibernate.cfg.xml
+WARN  DTDEntityResolver - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+INFO  Configuration - HHH000041: Configured SessionFactory: null
+INFO  DriverManagerConnectionProviderImpl - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+INFO  DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 1
+INFO  DriverManagerConnectionProviderImpl - HHH000006: Autocommit mode: false
+INFO  DriverManagerConnectionProviderImpl - HHH000401: using driver [org.hsqldb.jdbcDriver] at URL [jdbc:hsqldb:hsql://localhost/POS]
+INFO  DriverManagerConnectionProviderImpl - HHH000046: Connection properties: {user=sa, password=****}
+INFO  Dialect - HHH000400: Using dialect: org.hibernate.dialect.HSQLDialect
+INFO  TransactionFactoryInitiator - HHH000399: Using default transaction strategy (direct JDBC transactions)
+INFO  ASTQueryTranslatorFactory - HHH000397: Using ASTQueryTranslatorFactory
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Nov 14 17:58:26 EET 2013
+INFO  PurchaseTab - Started adding new item
+WARN  PurchaseTab - Illegal move attempted
+INFO  Version - HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+INFO  Version - HHH000412: Hibernate Core {4.1.7.Final}
+INFO  Environment - HHH000206: hibernate.properties not found
+INFO  Environment - HHH000021: Bytecode provider name : javassist
+INFO  Configuration - HHH000043: Configuring from resource: /hibernate.cfg.xml
+INFO  Configuration - HHH000040: Configuration resource: /hibernate.cfg.xml
+WARN  DTDEntityResolver - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+INFO  Configuration - HHH000041: Configured SessionFactory: null
+INFO  DriverManagerConnectionProviderImpl - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+INFO  DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 1
+INFO  DriverManagerConnectionProviderImpl - HHH000006: Autocommit mode: false
+INFO  DriverManagerConnectionProviderImpl - HHH000401: using driver [org.hsqldb.jdbcDriver] at URL [jdbc:hsqldb:hsql://localhost/POS]
+INFO  DriverManagerConnectionProviderImpl - HHH000046: Connection properties: {user=sa, password=****}
+INFO  Dialect - HHH000400: Using dialect: org.hibernate.dialect.HSQLDialect
+INFO  TransactionFactoryInitiator - HHH000399: Using default transaction strategy (direct JDBC transactions)
+INFO  ASTQueryTranslatorFactory - HHH000397: Using ASTQueryTranslatorFactory
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Nov 14 18:03:26 EET 2013
+INFO  PurchaseTab - Started adding new item
+INFO  PurchaseTab - Added new item
+INFO  Version - HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+INFO  Version - HHH000412: Hibernate Core {4.1.7.Final}
+INFO  Environment - HHH000206: hibernate.properties not found
+INFO  Environment - HHH000021: Bytecode provider name : javassist
+INFO  Configuration - HHH000043: Configuring from resource: /hibernate.cfg.xml
+INFO  Configuration - HHH000040: Configuration resource: /hibernate.cfg.xml
+WARN  DTDEntityResolver - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+INFO  Configuration - HHH000041: Configured SessionFactory: null
+INFO  DriverManagerConnectionProviderImpl - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+INFO  DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 1
+INFO  DriverManagerConnectionProviderImpl - HHH000006: Autocommit mode: false
+INFO  DriverManagerConnectionProviderImpl - HHH000401: using driver [org.hsqldb.jdbcDriver] at URL [jdbc:hsqldb:hsql://localhost/POS]
+INFO  DriverManagerConnectionProviderImpl - HHH000046: Connection properties: {user=sa, password=****}
+INFO  Dialect - HHH000400: Using dialect: org.hibernate.dialect.HSQLDialect
+INFO  TransactionFactoryInitiator - HHH000399: Using default transaction strategy (direct JDBC transactions)
+INFO  ASTQueryTranslatorFactory - HHH000397: Using ASTQueryTranslatorFactory
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Nov 14 18:06:03 EET 2013
+INFO  PurchaseTab - Started adding new item
+INFO  PurchaseTab - Added new item
+INFO  Version - HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+INFO  Version - HHH000412: Hibernate Core {4.1.7.Final}
+INFO  Environment - HHH000206: hibernate.properties not found
+INFO  Environment - HHH000021: Bytecode provider name : javassist
+INFO  Configuration - HHH000043: Configuring from resource: /hibernate.cfg.xml
+INFO  Configuration - HHH000040: Configuration resource: /hibernate.cfg.xml
+WARN  DTDEntityResolver - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+INFO  Configuration - HHH000041: Configured SessionFactory: null
+INFO  DriverManagerConnectionProviderImpl - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+INFO  DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 1
+INFO  DriverManagerConnectionProviderImpl - HHH000006: Autocommit mode: false
+INFO  DriverManagerConnectionProviderImpl - HHH000401: using driver [org.hsqldb.jdbcDriver] at URL [jdbc:hsqldb:hsql://localhost/POS]
+INFO  DriverManagerConnectionProviderImpl - HHH000046: Connection properties: {user=sa, password=****}
+INFO  Dialect - HHH000400: Using dialect: org.hibernate.dialect.HSQLDialect
+INFO  TransactionFactoryInitiator - HHH000399: Using default transaction strategy (direct JDBC transactions)
+INFO  ASTQueryTranslatorFactory - HHH000397: Using ASTQueryTranslatorFactory
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Nov 14 18:07:12 EET 2013
+INFO  PurchaseTab - Started adding new item
+INFO  PurchaseTab - Added new item
+INFO  Version - HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+INFO  Version - HHH000412: Hibernate Core {4.1.7.Final}
+INFO  Environment - HHH000206: hibernate.properties not found
+INFO  Environment - HHH000021: Bytecode provider name : javassist
+INFO  Configuration - HHH000043: Configuring from resource: /hibernate.cfg.xml
+INFO  Configuration - HHH000040: Configuration resource: /hibernate.cfg.xml
+WARN  DTDEntityResolver - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+INFO  Configuration - HHH000041: Configured SessionFactory: null
+INFO  DriverManagerConnectionProviderImpl - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+INFO  DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 1
+INFO  DriverManagerConnectionProviderImpl - HHH000006: Autocommit mode: false
+INFO  DriverManagerConnectionProviderImpl - HHH000401: using driver [org.hsqldb.jdbcDriver] at URL [jdbc:hsqldb:hsql://localhost/POS]
+INFO  DriverManagerConnectionProviderImpl - HHH000046: Connection properties: {user=sa, password=****}
+INFO  Dialect - HHH000400: Using dialect: org.hibernate.dialect.HSQLDialect
+INFO  TransactionFactoryInitiator - HHH000399: Using default transaction strategy (direct JDBC transactions)
+INFO  ASTQueryTranslatorFactory - HHH000397: Using ASTQueryTranslatorFactory
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Nov 14 18:07:57 EET 2013
+INFO  PurchaseTab - Started adding new item
+ERROR PurchaseTab - ee.ut.math.tvt.salessystem.domain.exception.VerificationFailedException
+INFO  Version - HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+INFO  Version - HHH000412: Hibernate Core {4.1.7.Final}
+INFO  Environment - HHH000206: hibernate.properties not found
+INFO  Environment - HHH000021: Bytecode provider name : javassist
+INFO  Configuration - HHH000043: Configuring from resource: /hibernate.cfg.xml
+INFO  Configuration - HHH000040: Configuration resource: /hibernate.cfg.xml
+WARN  DTDEntityResolver - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+INFO  Configuration - HHH000041: Configured SessionFactory: null
+INFO  DriverManagerConnectionProviderImpl - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+INFO  DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 1
+INFO  DriverManagerConnectionProviderImpl - HHH000006: Autocommit mode: false
+INFO  DriverManagerConnectionProviderImpl - HHH000401: using driver [org.hsqldb.jdbcDriver] at URL [jdbc:hsqldb:hsql://localhost/POS]
+INFO  DriverManagerConnectionProviderImpl - HHH000046: Connection properties: {user=sa, password=****}
+INFO  Dialect - HHH000400: Using dialect: org.hibernate.dialect.HSQLDialect
+INFO  TransactionFactoryInitiator - HHH000399: Using default transaction strategy (direct JDBC transactions)
+INFO  ASTQueryTranslatorFactory - HHH000397: Using ASTQueryTranslatorFactory
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Nov 14 18:10:06 EET 2013
+INFO  PurchaseTab - Started adding new item
+ERROR PurchaseTab - ee.ut.math.tvt.salessystem.domain.exception.VerificationFailedException
+INFO  ENGINE - checkpointClose start
+INFO  ENGINE - checkpointClose end
+INFO  ENGINE - checkpointClose start
+INFO  ENGINE - checkpointClose end
+INFO  Version - HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+INFO  Version - HHH000412: Hibernate Core {4.1.7.Final}
+INFO  Environment - HHH000206: hibernate.properties not found
+INFO  Environment - HHH000021: Bytecode provider name : javassist
+INFO  Configuration - HHH000043: Configuring from resource: /hibernate.cfg.xml
+INFO  Configuration - HHH000040: Configuration resource: /hibernate.cfg.xml
+WARN  DTDEntityResolver - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+INFO  Configuration - HHH000041: Configured SessionFactory: null
+INFO  DriverManagerConnectionProviderImpl - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+INFO  DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 1
+INFO  DriverManagerConnectionProviderImpl - HHH000006: Autocommit mode: false
+INFO  DriverManagerConnectionProviderImpl - HHH000401: using driver [org.hsqldb.jdbcDriver] at URL [jdbc:hsqldb:hsql://localhost/POS]
+INFO  DriverManagerConnectionProviderImpl - HHH000046: Connection properties: {user=sa, password=****}
+INFO  Dialect - HHH000400: Using dialect: org.hibernate.dialect.HSQLDialect
+INFO  TransactionFactoryInitiator - HHH000399: Using default transaction strategy (direct JDBC transactions)
+INFO  ASTQueryTranslatorFactory - HHH000397: Using ASTQueryTranslatorFactory
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Nov 14 18:14:56 EET 2013
+INFO  PurchaseTab - Started adding new item
+ERROR PurchaseTab - ee.ut.math.tvt.salessystem.domain.exception.VerificationFailedException
+INFO  PurchaseTab - Item adding cancelled
+INFO  PurchaseTab - New sale process started
+INFO  PurchaseTab - Started adding new item
+INFO  PurchaseTab - Added new item
+INFO  PurchaseTab - Item adding cancelled
+INFO  PurchaseTab - Sale complete
+INFO  ENGINE - checkpointClose start
+INFO  ENGINE - checkpointClose end
+INFO  Version - HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+INFO  Version - HHH000412: Hibernate Core {4.1.7.Final}
+INFO  Environment - HHH000206: hibernate.properties not found
+INFO  Environment - HHH000021: Bytecode provider name : javassist
+INFO  Configuration - HHH000043: Configuring from resource: /hibernate.cfg.xml
+INFO  Configuration - HHH000040: Configuration resource: /hibernate.cfg.xml
+WARN  DTDEntityResolver - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+INFO  Configuration - HHH000041: Configured SessionFactory: null
+INFO  DriverManagerConnectionProviderImpl - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+INFO  DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 1
+INFO  DriverManagerConnectionProviderImpl - HHH000006: Autocommit mode: false
+INFO  DriverManagerConnectionProviderImpl - HHH000401: using driver [org.hsqldb.jdbcDriver] at URL [jdbc:hsqldb:hsql://localhost/POS]
+INFO  DriverManagerConnectionProviderImpl - HHH000046: Connection properties: {user=sa, password=****}
+INFO  Dialect - HHH000400: Using dialect: org.hibernate.dialect.HSQLDialect
+INFO  TransactionFactoryInitiator - HHH000399: Using default transaction strategy (direct JDBC transactions)
+INFO  ASTQueryTranslatorFactory - HHH000397: Using ASTQueryTranslatorFactory
+INFO  Intro - Intro window opened from ee.ut.math.tvt.Agnes.Intro at Thu Nov 14 18:17:03 EET 2013
