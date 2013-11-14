@@ -25,11 +25,11 @@ public class Intro {
 		} else {
 
 			IntroUI introUI = new IntroUI();
-			//introUI.setVisible(true);
+
 			introUI.setAlwaysOnTop(true);
 
 			introUI.setAlwaysOnTop(false);
-			//introUI.setVisible(false);
+
 			try {
 				Thread.sleep(3000);
 			} catch (InterruptedException e) {
