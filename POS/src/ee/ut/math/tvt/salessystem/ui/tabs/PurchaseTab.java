@@ -16,7 +16,6 @@ import org.apache.log4j.Logger;
 import ee.ut.math.tvt.salessystem.domain.controller.SalesDomainController;
 import ee.ut.math.tvt.salessystem.domain.data.Sale;
 import ee.ut.math.tvt.salessystem.domain.exception.VerificationFailedException;
-import ee.ut.math.tvt.salessystem.service.HibernateDataService;
 import ee.ut.math.tvt.salessystem.ui.model.SalesSystemModel;
 import ee.ut.math.tvt.salessystem.ui.panels.PurchaseItemPanel;
 

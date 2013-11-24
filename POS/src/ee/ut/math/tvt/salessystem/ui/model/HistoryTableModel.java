@@ -4,33 +4,22 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.EntityManager;
 import javax.swing.table.AbstractTableModel;
-
-import org.apache.log4j.Logger;
-
-import com.sun.corba.se.impl.encoding.EncapsInputStream;
 
 import ee.ut.math.tvt.salessystem.domain.data.Sale;
 import ee.ut.math.tvt.salessystem.domain.data.SoldItem;
-import ee.ut.math.tvt.salessystem.service.HibernateDataService;
-import ee.ut.math.tvt.salessystem.util.HibernateUtil;
 
 public class HistoryTableModel extends AbstractTableModel {
 	private static final long serialVersionUID = 1L;
 
-	private static final Logger log = Logger
-			.getLogger(PurchaseInfoTableModel.class);
 	protected List<Sale> sales;
 	protected List<String[]> rows;
 	protected final String[] headers;
-	private static HibernateDataService service = new HibernateDataService();
 
 	public HistoryTableModel() {
 		headers = new String[] { "Date", "Time", "Total price" };
 		rows = new ArrayList<String[]>();
 		sales = new ArrayList<Sale>();
-
 	}
 
 	public void addItem(final Sale sale) {
@@ -43,19 +32,14 @@ public class HistoryTableModel extends AbstractTableModel {
 	}
 
 	public List<SoldItem> getSaleItems(int selectedRow) {
-		return sales.get(selectedRow).getSoldItems();
-
+		if (sales.size() > selectedRow && selectedRow >= 0)
+			return sales.get(selectedRow).getSoldItems();
+		return null;
 	}
-
-	public void loadHistoryTableModelState() {
-		List<Sale> dataset = service.getSales();
-		sales.clear();
-		rows.clear();
-		
-		for (Sale i : dataset) {
-			addItem(i);
-		}
-		
+	
+	public void populateWithData(List<Sale> saleData) {
+		for (Sale sale: saleData)
+			addItem(sale);
 	}
 
 	@Override
@@ -79,13 +63,7 @@ public class HistoryTableModel extends AbstractTableModel {
 	}
 
 	private String getSoldItemsSum(Sale sale) {
-		double sum = 0;
-
-		for (SoldItem item : sale.getSoldItems()) {
-			sum += item.getSum();
-		}
-
-		return "" + sum;
+		return String.valueOf(sale.getSum());
 	}
 
 }

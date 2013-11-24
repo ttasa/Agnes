@@ -20,6 +20,7 @@ public interface SalesDomainController {
      */
     public List<StockItem> loadWarehouseState();
 
+    public List<Sale> loadHistoryState();
 
     // business processes
     /**

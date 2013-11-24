@@ -5,11 +5,9 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 import javax.swing.BorderFactory;
-import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
@@ -20,9 +18,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-import org.apache.log4j.Logger;
-
-import ee.ut.math.tvt.salessystem.domain.data.Sale;
 import ee.ut.math.tvt.salessystem.domain.data.SoldItem;
 import ee.ut.math.tvt.salessystem.domain.data.StockItem;
 import ee.ut.math.tvt.salessystem.service.HibernateDataService;
@@ -34,7 +29,6 @@ import ee.ut.math.tvt.salessystem.ui.panels.panes.ConfirmationPane;
  */
 public class PurchaseItemPanel extends JPanel {
 
-	private static final Logger log = Logger.getLogger(PurchaseItemPanel.class);
     private static final long serialVersionUID = 1L;
 
     // Text field on the dialogPane
@@ -51,8 +45,6 @@ public class PurchaseItemPanel extends JPanel {
     
     //Database service
     private static HibernateDataService service = new HibernateDataService();
-	private List<String> stockItemNames;
-    
     
     /**
      * Constructs new purchase item panel.

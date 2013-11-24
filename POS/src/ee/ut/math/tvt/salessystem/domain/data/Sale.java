@@ -1,5 +1,6 @@
 package ee.ut.math.tvt.salessystem.domain.data;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +27,8 @@ public class Sale {
 	private List<SoldItem> soldItems;
 	
 	public Sale() {
+		soldItems = new ArrayList<SoldItem>();
+		date = new Date();
 	}
 	
 	public Sale(List<SoldItem> soldItems) {
@@ -45,6 +48,23 @@ public class Sale {
 
 	public Long getID() {
 		return id;
+	}
+	
+	public void addSoldItem(SoldItem soldItem) {
+		soldItems.add(soldItem);
+		soldItem.setSale(this);
+	}
+	
+	public int getNrOfSoldItems() {
+		return soldItems.size();
+	}
+	
+	public double getSum() {
+		double sum = 0.0;
+		for (SoldItem soldItem: soldItems)
+			sum += soldItem.getSum();
+		
+		return sum;
 	}
 	
 }

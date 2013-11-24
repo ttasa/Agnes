@@ -20,7 +20,7 @@ import ee.ut.math.tvt.salessystem.ui.panels.WarehousePanel;
 
 public class StockTab {
 
-	private static final Logger log = Logger.getLogger(PurchaseTab.class);
+	private static final Logger log = Logger.getLogger(StockTab.class);
 
 	private WarehousePanel warehousePane;
 

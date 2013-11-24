@@ -3,14 +3,12 @@ package ee.ut.math.tvt.salessystem.ui.model;
 import org.apache.log4j.Logger;
 
 import ee.ut.math.tvt.salessystem.domain.data.SoldItem;
-import ee.ut.math.tvt.salessystem.domain.data.StockItem;
 
 /**
  * Purchase history details model.
  */
 public class PurchaseInfoTableModel extends SalesSystemTableModel<SoldItem> {
 	private static final long serialVersionUID = 1L;
-	private StockItem stockitem;
 	private static final Logger log = Logger.getLogger(PurchaseInfoTableModel.class);
 	
 	public PurchaseInfoTableModel() {

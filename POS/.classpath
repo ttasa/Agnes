@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry excluding="conf/|conf/|resources/|resources/" including="Agnes.jpg|application.properties|version.properties" kind="src" path=""/>
 	<classpathentry kind="src" path="conf"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry including="Agnes.jpg|application.properties|version.properties" kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.17.jar"/>
 	<classpathentry kind="lib" path="lib/jgoodies-common-1.4.0.jar"/>
@@ -22,5 +23,6 @@
 	<classpathentry kind="lib" path="lib/hibernate/jboss-logging-3.1.0.GA.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate/jboss-transaction-api_1.1_spec-1.0.0.Final.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/junit-4.10.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

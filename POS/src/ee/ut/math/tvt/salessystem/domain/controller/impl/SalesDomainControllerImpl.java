@@ -55,6 +55,11 @@ public class SalesDomainControllerImpl implements SalesDomainController {
 		return dataset;
 	}
 	
+	public List<Sale> loadHistoryState() {	
+		List<Sale> dataset = service.getSales();
+		return dataset;
+	}
+	
 	public void endSession() {
 		HibernateUtil.closeSession();
 	}

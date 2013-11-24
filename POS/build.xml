@@ -5,8 +5,10 @@
 	<property name="conf.dir" value="conf" />
 	<property name="lib.dir" value="lib" />
 	<property name="build.dir" value="build" />
+	<property name="test.dir" value="test" />
 	<property name="classes.dir" value="${build.dir}/classes" />
 	<property name="jar.dir" value="${build.dir}/jar" />
+	<property name="build.test.dir" value="${build.dir}/test" />
 	<property name="main-class" value="ee.ut.math.tvt.Agnes.Intro" />
 	<property name="group-name" value="Agnes" />
 	<property name="version-file" value="version.properties" />
@@ -29,6 +31,14 @@
 		<pathelement location="${conf.dir}" />
 		<fileset dir="${lib.dir}" includes="*.jar" />
         <fileset dir="${lib.hibernate.dir}" includes="*.jar" />
+	</path>
+	
+	<path id="test.classpath">
+		<pathelement location="${classes.dir}" />
+		<pathelement location="${conf.dir}" />
+		<fileset dir="${lib.dir}" includes="*.jar" />
+        <fileset dir="${lib.hibernate.dir}" includes="*.jar" />
+		<pathelement path="${build.test.dir}/" />
 	</path>
 
 
@@ -113,9 +123,7 @@
 			<arg value="${repository}" />
 			<arg value="master" />
 		</exec>
-
 	</target>
-
 
 	<target name="dist" description="Creates a jar file" depends="build">
 		<antcall target="update-version" />
@@ -133,6 +141,40 @@
 	<target name="jrun" description="Runs a jar file" depends="dist">
 		<java jar="${jar.dir}/${group-name}.jar" fork="true" />
 	</target>
+	
+	
+	
+	<target name="build-tests" depends="build" description="Build the system">
+		<mkdir dir="${build.test.dir}" />
+		<javac
+            srcdir="${test.dir}"
+            destdir="${build.test.dir}"
+            debug="true"
+            debuglevel="lines,vars,source"
+            encoding="utf-8"
+            compiler="modern"
+            target="1.5"
+            source="1.5"
+        	classpathref="build.classpath"
+			includeantruntime="false"
+        >
+			<classpath>
+				<pathelement path="${classes.dir}" />
+			</classpath>
+		</javac>
+	</target>
+	
+	<target name="test" depends="build-tests" description="Run the template application">
+		<junit>
+			<classpath refid="test.classpath" />
+			<formatter type="brief" usefile="false" />
+			<batchtest>
+				<fileset dir="${build.test.dir}" includes="**/*.class" />
+			</batchtest>
+		</junit>
+	</target>
+	
+	
 
 	<target name="clean" description="Delete all generated files">
 		<delete dir="${build.dir}" failonerror="false" />
