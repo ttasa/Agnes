@@ -36,11 +36,15 @@ public class Sale implements DisplayableItem {
     /** Empty constructors are used by hibernate */
     public Sale() {
     }
-
-    public Sale(List<SoldItem> goods) {
+    public Sale(Client client){
+    	this.client=client;
+    }
+   /* Ilmselt pole seda vaja 
+    * 
+    * public Sale(List<SoldItem> goods) {
         this.soldItems = new HashSet<SoldItem>(goods);
         this.sellingTime = new Date();
-    }
+    }*/
 
     public Client getClient() {
         return client;
@@ -77,6 +81,11 @@ public class Sale implements DisplayableItem {
     public void addSoldItem(SoldItem item) {
         item.setSale(this);
         soldItems.add(item);
+    }
+    /*Pane t2hele, et quantity lisatakse siin*/
+    public void addItem(StockItem item,int quantity) {
+        SoldItem solditem=new SoldItem(item,quantity);
+        soldItems.add(solditem);
     }
 
     public double getSum() {
