@@ -1,11 +1,7 @@
 package ee.ut.math.tvt.salessystem.ui.model;
 
 import java.util.List;
-import java.util.NoSuchElementException;
-
 import org.apache.log4j.Logger;
-
-import ee.ut.math.tvt.salessystem.domain.data.SoldItem;
 import ee.ut.math.tvt.salessystem.domain.data.StockItem;
 
 /**
@@ -14,11 +10,17 @@ import ee.ut.math.tvt.salessystem.domain.data.StockItem;
 public class StockTableModel extends SalesSystemTableModel<StockItem> {
 	private static final long serialVersionUID = 1L;
 
-
 	private static final Logger log = Logger.getLogger(StockTableModel.class);
 
+	private List<StockItem> stockItems;
+	
 	public StockTableModel() {
 		super(new String[] {"Id", "Name", "Price", "Quantity"});
+	}
+	
+	public void setStockItems(List<StockItem> stockItems) {
+		this.stockItems = stockItems;
+		fireTableDataChanged();
 	}
 
 	@Override
@@ -35,31 +37,9 @@ public class StockTableModel extends SalesSystemTableModel<StockItem> {
 		}
 		throw new IllegalArgumentException("Column index out of range");
 	}
-
-	/**
-	 * Add new stock item to table. If there already is a stock item with
-	 * same id, then existing item's quantity will be increased.
-	 * @param stockItem
-	 */
-	public void addItem(final StockItem stockItem) {
-		try {
-			StockItem item = getItemById(stockItem.getId());
-			item.setQuantity(item.getQuantity() + stockItem.getQuantity());
-			log.debug("Found existing item " + stockItem.getName()
-					+ " increased quantity by " + stockItem.getQuantity());
-		}
-		catch (NoSuchElementException e) {
-			rows.add(stockItem);
-			log.debug("Added " + stockItem.getName()
-					+ " quantity of " + stockItem.getQuantity());
-		}
-		fireTableDataChanged();
-	}
-
-	
 	
 	public boolean hasEnoughInStock(StockItem item, int quantity) {
-	    for(StockItem i : this.rows) {
+	    for(StockItem i : getTableRows()) {
 	        if (i.getId().equals(item.getId())) {
 	            return (i.getQuantity() >= quantity);
 	        }
@@ -68,7 +48,7 @@ public class StockTableModel extends SalesSystemTableModel<StockItem> {
 	}
 	
 	public boolean validateNameUniqueness(String newName) {
-	    for (StockItem item : rows) {
+	    for (StockItem item : getTableRows()) {
 	        log.debug(" === Comparing: " + newName + " vs. " + item.getName());
 	        
 	        if (newName.equals(item.getName())) {
@@ -87,7 +67,7 @@ public class StockTableModel extends SalesSystemTableModel<StockItem> {
 			buffer.append(headers[i] + "\t");
 		buffer.append("\n");
 
-		for (final StockItem stockItem : rows) {
+		for (final StockItem stockItem : getTableRows()) {
 			buffer.append(stockItem.getId() + "\t");
 			buffer.append(stockItem.getName() + "\t");
 			buffer.append(stockItem.getPrice() + "\t");
@@ -100,7 +80,7 @@ public class StockTableModel extends SalesSystemTableModel<StockItem> {
 
 	@Override
 	public List<StockItem> getTableRows() {
-		return rows;
+		return stockItems;
 	}
 
 }

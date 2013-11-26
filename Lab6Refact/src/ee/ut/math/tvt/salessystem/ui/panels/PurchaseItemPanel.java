@@ -35,7 +35,7 @@ public class PurchaseItemPanel extends JPanel {
     private static final Logger logger = Logger.getLogger(PurchaseItemPanel.class);
 
     // Text field on the dialogPane
-    private JComboBox stockItemSelector;
+    private JComboBox<StockItem> stockItemSelector;
     private JTextField barCodeField;
     private JTextField quantityField;
     private JTextField priceField;
@@ -88,7 +88,7 @@ public class PurchaseItemPanel extends JPanel {
         panel.setLayout(new GridLayout(5, 2));
         panel.setBorder(BorderFactory.createTitledBorder("Product"));
 
-        stockItemSelector = new JComboBox();
+        stockItemSelector = new JComboBox<StockItem>();
         barCodeField = new JTextField();
         quantityField = new JTextField("1");
         priceField = new JTextField();
@@ -131,7 +131,6 @@ public class PurchaseItemPanel extends JPanel {
                 try {
 					addItemEventHandler();
 				} catch (SalesSystemException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
             }
@@ -186,9 +185,14 @@ public class PurchaseItemPanel extends JPanel {
             } catch (NumberFormatException ex) {
                 quantity = 1;
             }
-
-            model.getSelectedSale().addItem(stockItem, quantity);
             
+            // If there is not enough stock left in the warehouse to add this quantity..
+            try {
+                model.getCurrentPurchaseTableModel()
+                    .addItem(new SoldItem(stockItem, quantity));
+            } catch (SalesSystemException e) {
+                showNotEnoughInStockWarning();
+            }
         }
     }
 
@@ -220,9 +224,9 @@ public class PurchaseItemPanel extends JPanel {
      */
     public void reset() {
         // Initialize the textfields
-        ((DefaultComboBoxModel)stockItemSelector.getModel()).removeAllElements();
+        ((DefaultComboBoxModel<StockItem>)stockItemSelector.getModel()).removeAllElements();
         for(StockItem stockItem : model.getWarehouseTableModel().getTableRows()) {
-            ((DefaultComboBoxModel)stockItemSelector.getModel()).addElement(stockItem);
+            ((DefaultComboBoxModel<StockItem>)stockItemSelector.getModel()).addElement(stockItem);
         }
         barCodeField.setText("");
         quantityField.setText("1");

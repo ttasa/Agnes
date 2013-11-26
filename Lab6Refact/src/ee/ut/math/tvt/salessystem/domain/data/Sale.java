@@ -1,9 +1,9 @@
 package ee.ut.math.tvt.salessystem.domain.data;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,8 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import ee.ut.math.tvt.salessystem.domain.exception.SalesSystemException;
 
 /**
  * Sale object. Contains client and sold items.
@@ -28,26 +26,21 @@ public class Sale implements DisplayableItem {
     private Long id;
 
     @OneToMany(targetEntity = SoldItem.class, mappedBy = "sale", cascade = CascadeType.ALL)
-    private Set<SoldItem> soldItems;
+    private List<SoldItem> soldItems;
     private Date sellingTime;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CLIENT_ID")
     private Client client;
 
-    /** Empty constructors are used by hibernate */
     public Sale() {
+    	soldItems = new ArrayList<SoldItem>();
     }
+    
     public Sale(Client client){
     	this.client=client;
-    	this.soldItems = new HashSet<SoldItem>();
+    	this.soldItems = new ArrayList<SoldItem>();
     }
-   /* Ilmselt pole seda vaja 
-    * 
-    * public Sale(List<SoldItem> goods) {
-        this.soldItems = new HashSet<SoldItem>(goods);
-        this.sellingTime = new Date();
-    }*/
 
     public Client getClient() {
         return client;
@@ -61,15 +54,15 @@ public class Sale implements DisplayableItem {
         return sellingTime;
     }
 
-    public void setSellingTime(Date sellingTime) {
-        this.sellingTime = sellingTime;
+    public void setSellingTime() {
+        this.sellingTime = new Date();
     }
 
-    public Set<SoldItem> getSoldItems() {
+    public List<SoldItem> getSoldItems() {
         return soldItems;
     }
 
-    public void setSoldItems(Set<SoldItem> soldItems) {
+    public void setSoldItems(List<SoldItem> soldItems) {
         this.soldItems = soldItems;
     }
 
@@ -80,19 +73,10 @@ public class Sale implements DisplayableItem {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public void addSoldItem(SoldItem item) {
-        item.setSale(this);
-        soldItems.add(item);
-    }
-    /*Pane t2hele, et quantity lisatakse siin*/
     
-    
-    public void addItem(StockItem item,int quantity) {
-
-        SoldItem solditem=new SoldItem(item,quantity); 
-        solditem.setSale(this);
-        soldItems.add(solditem);
+    public void addItem(SoldItem soldItem) {
+        soldItem.setSale(this);
+        soldItems.add(soldItem);
     }
 
     public double getSum() {

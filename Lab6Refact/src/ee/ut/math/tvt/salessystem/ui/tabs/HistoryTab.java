@@ -28,6 +28,12 @@ public class HistoryTab {
     public HistoryTab(SalesSystemModel model) {
         this.model = model;
     }
+    
+    public void refresh() {
+    	model.getPurchaseHistoryTableModel().setSales(
+    			model.getDomainController().getAllSales());
+    	historyDetailsTableModel.clearSale();
+    }
 
     /**
      * The main entry-point method. Creates the tab.

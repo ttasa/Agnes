@@ -1,6 +1,5 @@
 package ee.ut.math.tvt.salessystem.ui.tabs;
 
-import ee.ut.math.tvt.salessystem.domain.controller.SalesDomainController;
 import ee.ut.math.tvt.salessystem.domain.data.StockItem;
 import ee.ut.math.tvt.salessystem.ui.model.SalesSystemModel;
 import java.awt.Color;
@@ -23,15 +22,13 @@ import org.apache.log4j.Logger;
 public class StockTab {
 
     private static final Logger log = Logger.getLogger(StockTab.class);
-    private final SalesDomainController controller;
 
     private SalesSystemModel model;
 
     private JButton addItem;
 
-    public StockTab(SalesSystemModel model, SalesDomainController controller) {
+    public StockTab(SalesSystemModel model) {
         this.model = model;
-        this.controller = controller;
     }
 
     // warehouse stock tab - consists of a menu and a table
@@ -175,7 +172,7 @@ public class StockTab {
 
         if (nameValid && priceValid && quantityValid) {
             StockItem newItem = new StockItem(itemName, "", price, quantity);
-            controller.createStockItem(newItem);
+            model.getDomainController().createStockItem(newItem);
 
         // Show the error messages
         } else {
@@ -186,6 +183,11 @@ public class StockTab {
                     JOptionPane.ERROR_MESSAGE
             );
         }
+    }
+    
+    public void refresh() {
+    	model.getWarehouseTableModel().setStockItems(
+    			model.getDomainController().getAllStockItems());
     }
 
 }

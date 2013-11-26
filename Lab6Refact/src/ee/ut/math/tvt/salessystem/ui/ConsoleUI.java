@@ -2,10 +2,9 @@ package ee.ut.math.tvt.salessystem.ui;
 
 import ee.ut.math.tvt.salessystem.domain.controller.SalesDomainController;
 import ee.ut.math.tvt.salessystem.domain.data.Client;
+import ee.ut.math.tvt.salessystem.domain.data.Sale;
 import ee.ut.math.tvt.salessystem.domain.data.SoldItem;
 import ee.ut.math.tvt.salessystem.domain.data.StockItem;
-import ee.ut.math.tvt.salessystem.domain.exception.VerificationFailedException;
-import ee.ut.math.tvt.salessystem.ui.model.StockTableModel;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,6 +12,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+
 import org.apache.log4j.Logger;
 
 /**
@@ -130,14 +130,13 @@ public class ConsoleUI {
                 return;
             }
             try {
-                List<SoldItem> soldItems = new ArrayList<SoldItem>();
+            	Sale sale = new Sale(selectedClient);
                 for(StockItem stockItem : cart) {
-                    soldItems.add(new SoldItem(stockItem, stockItem.getQuantity()));
+                    sale.addItem(new SoldItem(stockItem, stockItem.getQuantity()));
                 }
-                /* registerSale meetod siia SalesDomainControllerImpl klassist*/ 
-                dc.submitCurrentPurchase(soldItems, selectedClient);
+                dc.registerSale(sale);
                 cart.clear();
-            } catch (VerificationFailedException e) {
+            } catch (Exception e) {
                 log.error(e.getMessage());
             }
 

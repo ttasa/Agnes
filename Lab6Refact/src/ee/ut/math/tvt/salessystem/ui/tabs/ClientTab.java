@@ -20,6 +20,11 @@ public class ClientTab {
         this.model = model;
     } 
     
+    public void refresh() {
+    	model.getClientTableModel().setClients(
+    			model.getDomainController().getAllClients());
+    }
+    
     /**
      * The main entry-point method. Creates the tab.
      */
@@ -35,9 +40,6 @@ public class ClientTab {
         return panel;
     }
 
-    
-
-    
     private Component drawClientsTable() {
 
         // Create the table 

@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import ee.ut.math.tvt.salessystem.domain.data.Sale;
-import ee.ut.math.tvt.salessystem.domain.data.SoldItem;
 
 /**
  * Purchase history model.
@@ -13,12 +12,17 @@ import ee.ut.math.tvt.salessystem.domain.data.SoldItem;
 public class PurchaseHistoryTableModel extends SalesSystemTableModel<Sale> {
 	private static final long serialVersionUID = 1L;
 	
-	protected List<Sale> rows;
-	
 	private static DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 
+	private List<Sale> sales;
+	
 	public PurchaseHistoryTableModel() {
 		super(new String[] { "Id", "Time", "Sum", "Client" });
+	}
+	
+	public void setSales(List<Sale> sales) {
+		this.sales = sales;
+		fireTableDataChanged();
 	}
 
 	@Override
@@ -44,7 +48,7 @@ public class PurchaseHistoryTableModel extends SalesSystemTableModel<Sale> {
 			buffer.append(headers[i] + "\t");
 		buffer.append("\n");
 
-		for (final Sale sale : rows) {
+		for (final Sale sale : getTableRows()) {
 			buffer.append(sale.getId() + "\t");
 			//buffer.append(sale.getClient() != null ? sale.getClient().getFirstName() : "" + "\t");
 			buffer.append(sale.getSum() + "\t");
@@ -56,6 +60,7 @@ public class PurchaseHistoryTableModel extends SalesSystemTableModel<Sale> {
 
 	@Override
 	public List<Sale> getTableRows() {
-		return rows;
+		return sales;
 	}
+	
 }

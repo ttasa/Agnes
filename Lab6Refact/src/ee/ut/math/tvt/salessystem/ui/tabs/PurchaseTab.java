@@ -1,6 +1,5 @@
 package ee.ut.math.tvt.salessystem.ui.tabs;
 
-import ee.ut.math.tvt.salessystem.domain.controller.SalesDomainController;
 import ee.ut.math.tvt.salessystem.domain.data.Client;
 import ee.ut.math.tvt.salessystem.domain.exception.VerificationFailedException;
 import ee.ut.math.tvt.salessystem.ui.model.SalesSystemModel;
@@ -12,7 +11,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
@@ -30,8 +28,6 @@ public class PurchaseTab {
 
     private static final Logger log = Logger.getLogger(PurchaseTab.class);
 
-    private final SalesDomainController domainController;
-
     private JButton newPurchase;
 
     private JButton submitPurchase;
@@ -44,9 +40,7 @@ public class PurchaseTab {
 
     private JFrame parent;
 
-    public PurchaseTab(SalesDomainController controller, SalesSystemModel model,
-            JFrame parent) {
-        this.domainController = controller;
+    public PurchaseTab(SalesSystemModel model, JFrame parent) {
         this.model = model;
         this.parent = parent;
     }
@@ -140,23 +134,20 @@ public class PurchaseTab {
     /** Event handler for the <code>new purchase</code> event. */
     protected void newPurchaseButtonClicked() {
         log.info("New sale process started");
-        domainController.startNewPurchase();
+        model.getDomainController().startNewPurchase();
         startNewSale();
     }
 
     /** Event handler for the <code>cancel purchase</code> event. */
     protected void cancelPurchaseButtonClicked() {
         log.info("Sale cancelled");
-        domainController.cancelCurrentPurchase();
+        model.getDomainController().cancelCurrentPurchase();
         endSale();
-        model.getCurrentPurchaseTableModel().clear();
-
     }
 
     /** Event handler for the <code>submit purchase</code> event. */
     protected void startPayingPurchase() {
-        double price = model.getCurrentPurchaseTableModel().getTotalPrice();
-        model.getSelectedSale().setSellingTime(new Date()); 
+        double price = model.getCurrentPurchaseTableModel().getSale().getSum();
         PayingWindow.show(price, this);
     }
 
@@ -165,10 +156,10 @@ public class PurchaseTab {
         log.info("Sale complete");
         log.debug("Contents of the current basket:\n"
 		        + model.getCurrentPurchaseTableModel());
-		domainController.registerSale(
-		        model.getSelectedSale());
+        model.getDomainController().registerSale(
+		        model.getCurrentPurchaseTableModel().getSale());
 		endSale();
-		model.getCurrentPurchaseTableModel().clear();
+		model.getCurrentPurchaseTableModel().clearSale();
     }
 
     public void cancelPaying() {
@@ -198,7 +189,7 @@ public class PurchaseTab {
 
 
     private void showSelectClientDialog() {
-        List<Client> clients = domainController.getAllClients();
+        List<Client> clients = model.getDomainController().getAllClients();
 
         Client currentClient = (Client)JOptionPane.showInputDialog(
                             parent,
@@ -215,7 +206,7 @@ public class PurchaseTab {
             log.info("No client selected");
         }
         // update selected client
-        model.setSelectedClient(currentClient);
+        model.getCurrentPurchaseTableModel().getSale().setClient(currentClient);
     }
 
 
