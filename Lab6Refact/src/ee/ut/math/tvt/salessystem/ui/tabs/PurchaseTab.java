@@ -12,6 +12,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
@@ -155,24 +156,19 @@ public class PurchaseTab {
     /** Event handler for the <code>submit purchase</code> event. */
     protected void startPayingPurchase() {
         double price = model.getCurrentPurchaseTableModel().getTotalPrice();
+        model.getSelectedSale().setSellingTime(new Date()); 
         PayingWindow.show(price, this);
     }
 
 
-    public void endPurchaseAfterPaying() {
+    public void endPurchaseAfterPaying() throws VerificationFailedException {
         log.info("Sale complete");
-        try {
-
-            log.debug("Contents of the current basket:\n"
-                    + model.getCurrentPurchaseTableModel());
-            domainController.submitCurrentPurchase(
-                    model.getCurrentPurchaseTableModel().getTableRows(),
-                    model.getSelectedClient());
-            endSale();
-            model.getCurrentPurchaseTableModel().clear();
-        } catch (VerificationFailedException e1) {
-            log.error(e1.getMessage());
-        }
+        log.debug("Contents of the current basket:\n"
+		        + model.getCurrentPurchaseTableModel());
+		domainController.registerSale(
+		        model.getSelectedSale());
+		endSale();
+		model.getCurrentPurchaseTableModel().clear();
     }
 
     public void cancelPaying() {

@@ -1,7 +1,11 @@
-2013-11-24 18:37:35,058 [main] DEBUG - Strating SalesSystem with the Swing UI ..
-2013-11-24 18:37:35,365 [main] INFO - 21 items loaded from disk
-2013-11-24 18:37:35,375 [main] INFO - 1 clients loaded from disk
-2013-11-24 18:37:35,402 [main] INFO - 10 Sales loaded from disk
-2013-11-24 18:37:35,412 [main] WARN - [The JGoodies Windows Look and Feel - © 2001-2006 JGoodies Karsten Lentzsch - com.jgoodies.looks.windows.WindowsLookAndFeel] not supported on this platform
-2013-11-24 18:37:35,652 [main] INFO - SalesSystem started
-2013-11-24 18:37:45,644 [AWT-EventQueue-0] INFO - SalesSystem closed
+2013-11-26 15:32:50,515 [main] DEBUG - Strating SalesSystem with the Swing UI ..
+2013-11-26 15:32:50,802 [main] INFO - 23 items loaded from disk
+2013-11-26 15:32:50,809 [main] INFO - 1 clients loaded from disk
+2013-11-26 15:32:50,828 [main] INFO - 10 Sales loaded from disk
+2013-11-26 15:32:50,834 [main] WARN - [The JGoodies Windows Look and Feel - © 2001-2006 JGoodies Karsten Lentzsch - com.jgoodies.looks.windows.WindowsLookAndFeel] not supported on this platform
+2013-11-26 15:32:51,090 [main] INFO - SalesSystem started
+2013-11-26 15:32:52,321 [AWT-EventQueue-0] INFO - New sale process started
+2013-11-26 15:32:52,322 [AWT-EventQueue-0] INFO - New purchase started
+2013-11-26 15:32:52,335 [AWT-EventQueue-0] INFO - 1 clients loaded from disk
+2013-11-26 15:32:53,455 [AWT-EventQueue-0] INFO - Client Toomas with ID=1 got selected.
+2013-11-26 16:15:23,197 [AWT-EventQueue-0] INFO - SalesSystem closed

@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import ee.ut.math.tvt.salessystem.domain.exception.SalesSystemException;
+
 /**
  * Sale object. Contains client and sold items.
  */
@@ -38,6 +40,7 @@ public class Sale implements DisplayableItem {
     }
     public Sale(Client client){
     	this.client=client;
+    	this.soldItems = new HashSet<SoldItem>();
     }
    /* Ilmselt pole seda vaja 
     * 
@@ -83,8 +86,12 @@ public class Sale implements DisplayableItem {
         soldItems.add(item);
     }
     /*Pane t2hele, et quantity lisatakse siin*/
+    
+    
     public void addItem(StockItem item,int quantity) {
-        SoldItem solditem=new SoldItem(item,quantity);
+
+        SoldItem solditem=new SoldItem(item,quantity); 
+        solditem.setSale(this);
         soldItems.add(solditem);
     }
 

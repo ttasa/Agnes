@@ -128,7 +128,12 @@ public class PurchaseItemPanel extends JPanel {
         addItemButton = new JButton("Add to cart");
         addItemButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                addItemEventHandler();
+                try {
+					addItemEventHandler();
+				} catch (SalesSystemException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
             }
         });
 
@@ -171,7 +176,7 @@ public class PurchaseItemPanel extends JPanel {
     /**
      * Add new item to the cart.
      */
-    public void addItemEventHandler() {
+    public void addItemEventHandler() throws SalesSystemException {
         // add chosen item to the shopping cart.
         StockItem stockItem = getStockItemByBarcode();
         if (stockItem != null) {
@@ -182,13 +187,8 @@ public class PurchaseItemPanel extends JPanel {
                 quantity = 1;
             }
 
-            // If there is not enough stock left in the warehouse to add this quantity..
-            try {
-                model.getCurrentPurchaseTableModel()
-                    .addItem(new SoldItem(stockItem, quantity));
-            } catch (SalesSystemException e) {
-                showNotEnoughInStockWarning();
-            }
+            model.getSelectedSale().addItem(stockItem, quantity);
+            
         }
     }
 

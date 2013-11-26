@@ -5,6 +5,9 @@ import ee.ut.math.tvt.salessystem.domain.data.SoldItem;
 import ee.ut.math.tvt.salessystem.domain.data.StockItem;
 import ee.ut.math.tvt.salessystem.domain.exception.SalesSystemException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 import org.apache.log4j.Logger;
 
 /**
@@ -16,6 +19,7 @@ public class PurchaseInfoTableModel extends SalesSystemTableModel<SoldItem> {
 	private static final Logger log = Logger.getLogger(PurchaseInfoTableModel.class);
 
 	private SalesSystemModel model;
+
 
     public PurchaseInfoTableModel() {
         super(new String[] { "Id", "Name", "Price", "Quantity", "Sum"});
@@ -137,5 +141,8 @@ public class PurchaseInfoTableModel extends SalesSystemTableModel<SoldItem> {
         this.rows = new ArrayList<SoldItem>(sale.getSoldItems());
         fireTableDataChanged();
     }
-
+ 
+    public List<SoldItem> getTableRows(){
+    	return rows;
+    }
 }

@@ -104,7 +104,7 @@ public class SalesDomainControllerImpl implements SalesDomainController {
 	@Override
 	public void registerSale(Sale sale) {
 		   Transaction tx = session.beginTransaction();
-		   sale.setSellingTime(new Date());
+		    sale.setSellingTime(new Date()); 
 	        for (SoldItem item : sale.getSoldItems()) {
 	            item.setSale(sale);
 
