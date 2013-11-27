@@ -1,7 +1,7 @@
 package ee.ut.math.tvt.salessystem.ui.model;
 
 import java.util.List;
-import org.apache.log4j.Logger;
+
 import ee.ut.math.tvt.salessystem.domain.data.StockItem;
 
 /**
@@ -10,14 +10,12 @@ import ee.ut.math.tvt.salessystem.domain.data.StockItem;
 public class StockTableModel extends SalesSystemTableModel<StockItem> {
 	private static final long serialVersionUID = 1L;
 
-	private static final Logger log = Logger.getLogger(StockTableModel.class);
-
 	private List<StockItem> stockItems;
-	
+
 	public StockTableModel() {
-		super(new String[] {"Id", "Name", "Price", "Quantity"});
+		super(new String[] { "Id", "Name", "Price", "Quantity" });
 	}
-	
+
 	public void setStockItems(List<StockItem> stockItems) {
 		this.stockItems = stockItems;
 		fireTableDataChanged();
@@ -37,28 +35,7 @@ public class StockTableModel extends SalesSystemTableModel<StockItem> {
 		}
 		throw new IllegalArgumentException("Column index out of range");
 	}
-	
-	public boolean hasEnoughInStock(StockItem item, int quantity) {
-	    for(StockItem i : getTableRows()) {
-	        if (i.getId().equals(item.getId())) {
-	            return (i.getQuantity() >= quantity);
-	        }
-	    }
-	    return false;
-	}
-	
-	public boolean validateNameUniqueness(String newName) {
-	    for (StockItem item : getTableRows()) {
-	        log.debug(" === Comparing: " + newName + " vs. " + item.getName());
-	        
-	        if (newName.equals(item.getName())) {
-	            return false;
-	        }
-	    }
-	    return true;
-	}
-	
-	
+
 	@Override
 	public String toString() {
 		final StringBuffer buffer = new StringBuffer();

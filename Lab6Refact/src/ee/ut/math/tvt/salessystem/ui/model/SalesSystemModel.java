@@ -1,66 +1,69 @@
 package ee.ut.math.tvt.salessystem.ui.model;
 
 import ee.ut.math.tvt.salessystem.domain.controller.SalesDomainController;
+import ee.ut.math.tvt.salessystem.domain.data.controller.SaleController;
 
 /**
  * Main model. Holds all the other models.
  */
 public class SalesSystemModel {
 
-    // Warehouse model
-    private StockTableModel warehouseTableModel;
+	private StockTableModel warehouseTableModel;
+	private PurchaseInfoTableModel currentPurchaseTableModel;
+	private PurchaseHistoryTableModel purchaseHistoryTableModel;
+	private ClientTableModel clientTableModel;
 
-    // Current shopping cart model
-    private PurchaseInfoTableModel currentPurchaseTableModel;
+	private SalesDomainController domainController;
+	private SaleController saleController;
 
-    // Puchase history model
-    private PurchaseHistoryTableModel purchaseHistoryTableModel;
+	/**
+	 * Construct application model.
+	 * 
+	 * @param domainController
+	 *            Sales domain controller.
+	 */
+	public SalesSystemModel(SalesDomainController domainController) {
+		this.domainController = domainController;
+		saleController = new SaleController(domainController);
 
-    private ClientTableModel clientTableModel;
-    
-    private SalesDomainController domainController;
-    
-    /**
-     * Construct application model.
-     * @param domainController Sales domain controller.
-     */
-    public SalesSystemModel(SalesDomainController domainController) {
-    	this.domainController = domainController;
+		warehouseTableModel = new StockTableModel();
+		currentPurchaseTableModel = new PurchaseInfoTableModel(saleController);
+		purchaseHistoryTableModel = new PurchaseHistoryTableModel();
+		clientTableModel = new ClientTableModel();
 
-        warehouseTableModel = new StockTableModel();
-        currentPurchaseTableModel = new PurchaseInfoTableModel(this);
-        purchaseHistoryTableModel = new PurchaseHistoryTableModel();
-        clientTableModel = new ClientTableModel();
-        
-        // Load data from the database
-        warehouseTableModel.setStockItems(domainController.getAllStockItems());
-        purchaseHistoryTableModel.setSales(domainController.getAllSales());
-        clientTableModel.setClients(domainController.getAllClients());
-    }
-    
-    public SalesDomainController getDomainController() {
-    	return domainController;
-    }
+		// Load data from the database
+		warehouseTableModel.setStockItems(domainController.getAllStockItems());
+		purchaseHistoryTableModel.setSales(domainController.getAllSales());
+		clientTableModel.setClients(domainController.getAllClients());
+	}
 
-    public StockTableModel getWarehouseTableModel() {
-        return warehouseTableModel;
-    }
+	public SaleController getSaleController() {
+		return saleController;
+	}
 
-    public PurchaseInfoTableModel getCurrentPurchaseTableModel() {
-        return currentPurchaseTableModel;
-    }
+	public SalesDomainController getDomainController() {
+		return domainController;
+	}
 
-    public PurchaseHistoryTableModel getPurchaseHistoryTableModel() {
-        return purchaseHistoryTableModel;
-    }
+	public StockTableModel getWarehouseTableModel() {
+		return warehouseTableModel;
+	}
 
-    public ClientTableModel getClientTableModel() {
-        return clientTableModel;
-    }
+	public PurchaseInfoTableModel getCurrentPurchaseTableModel() {
+		return currentPurchaseTableModel;
+	}
 
-    public void setPurchaseHistoryTableModel(
-            PurchaseHistoryTableModel purchaseHistoryTableModel) {
-        this.purchaseHistoryTableModel = purchaseHistoryTableModel;
-    }
-    
+	public PurchaseHistoryTableModel getPurchaseHistoryTableModel() {
+		return purchaseHistoryTableModel;
+	}
+
+	public ClientTableModel getClientTableModel() {
+		return clientTableModel;
+	}
+
+	public void setPurchaseHistoryTableModel(
+			PurchaseHistoryTableModel purchaseHistoryTableModel) {
+		this.purchaseHistoryTableModel = purchaseHistoryTableModel;
+	}
+
 }

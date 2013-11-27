@@ -48,7 +48,6 @@ public class SalesSystemUI extends JFrame {
 	public SalesSystemUI(SalesDomainController domainController) {
 		this.domainController = domainController;
 		this.model = new SalesSystemModel(domainController);
-		domainController.setModel(model);
 
 		// Create singleton instances of the tab classes
 		historyTab = new HistoryTab(model);
@@ -108,5 +107,3 @@ public class SalesSystemUI extends JFrame {
 	}
 
 }
-
-

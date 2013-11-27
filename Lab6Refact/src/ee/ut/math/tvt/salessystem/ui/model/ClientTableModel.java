@@ -9,13 +9,13 @@ import ee.ut.math.tvt.salessystem.domain.data.Client;
  */
 public class ClientTableModel extends SalesSystemTableModel<Client> {
 	private static final long serialVersionUID = 1L;
-	
+
 	private List<Client> clients;
-	
+
 	public ClientTableModel() {
-		super(new String[] { "Id", "First name", "Discount"});
+		super(new String[] { "Id", "First name", "Discount" });
 	}
-	
+
 	public void setClients(List<Client> clients) {
 		this.clients = clients;
 		fireTableDataChanged();
